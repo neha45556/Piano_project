@@ -10,14 +10,23 @@
 #include <avr/io.h>
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
+#include "io.h"
+#include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
 #endif
 
-int main(void) {
-    /* Insert DDR and PORT initializations */
 
-    /* Insert your solution below */
-    while (1) {
 
-    }
-    return 1;
+
+int main(void){
+	DDRC = 0xFF; PORTC = 0x00;
+	DDRD = 0xFF; PORTD = 0x00;
+	
+	LCD_init();
+	LCD_DisplayString(1, "Hello World");
+	
+	while(1){continue;}
+	
 }
+	
+	
+
