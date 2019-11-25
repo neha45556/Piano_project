@@ -8,7 +8,6 @@
  *	code, is my own original work.
  */
 #include <avr/io.h>
-#include <io.h>
 #include "io.h"
 #ifdef _SIMULATE_
 
