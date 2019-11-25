@@ -19,7 +19,7 @@
 int main(void){
 	DDRC = 0xFF; PORTC = 0x00;
 	DDRD = 0xFF; PORTD = 0x00;
-	const char *hello = "Hello World";
+	const unsigned char *hello = "Hello World";
 	LCD_init();
 	LCD_DisplayString(1, hello);
 	
