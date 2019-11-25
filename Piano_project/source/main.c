@@ -457,7 +457,7 @@ int main(void){
 	LCD_init();
 	state = init;
 	//uint8_t led_pattern ;
-	LCD_DisplayString(1,"hello world");
+	LCD_DisplayString(1, "I work. YAY :) :)");
 	while(1) {
 		HC595Write(0b00000000);
 		sound();
