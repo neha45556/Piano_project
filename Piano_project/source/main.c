@@ -9,7 +9,6 @@
  */
 #include <avr/io.h>
 #ifdef _SIMULATE_
-#include "simAVRHeader.h"
 #include "io.h"
 #include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
 #endif
