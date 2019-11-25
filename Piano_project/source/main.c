@@ -98,8 +98,9 @@ void delay_ms(int miliSec) //for 8 Mhz crystal
 int main(void){
 	DDRC = 0xFF; PORTC = 0x00;
 	DDRD = 0xFF; PORTD = 0x00;
+	const unsigned char string = "hello world";
 	LCD_init();
-	LCD_DisplayString(1, "Hello World");
+	LCD_DisplayString(1, string);
 	
 	while(1){continue;}
 	
