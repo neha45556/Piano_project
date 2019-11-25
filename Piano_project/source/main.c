@@ -8,13 +8,14 @@
  *	code, is my own original work.
  */
 
-//#ifdef _SIMULATE_
-//#include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
-//#endif
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
 #include "io.h"
+#ifdef _SIMULATE_
+#include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
+#endif
 
 #define SET_BIT(p,i) ((p) |= (1 << (i)))
 #define CLR_BIT(p,i) ((p) &= ~(1 << (i)))
