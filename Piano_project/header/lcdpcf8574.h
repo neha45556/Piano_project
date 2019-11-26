@@ -239,7 +239,6 @@ Please refer to LICENSE file for licensing information.
 
 #include "pcf8574.h"
 
-#include "lcdpcf8574.h"
 
 #define lcd_e_delay()   __asm__ __volatile__( "rjmp 1f\n 1:" );
 #define lcd_e_toggle()  toggle_e()
