@@ -94,6 +94,17 @@ void delay_ms(int miliSec) //for 8 Mhz crystal
   }
 }
 
+void createChar(unsigned char loc, unsigned char* p){
+	unsigned char i;
+	if(loc < 8 ){
+		LCD_WriteCommand(0x40+(loc*8));
+		for(i = 0; i < 8; i++){
+			LCD_WriteData(p[i]);
+		}
+	}
+	LCD_WriteCommand(0x80);
+}
+
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
 
@@ -186,6 +197,7 @@ void PWM_off(){
     TCCR3A = 0x00;
     TCCR3B = 0x00;
 }
+
 
 
 #define buttons (~PINA & 0x7F)
@@ -446,6 +458,12 @@ void sound(){
 			
 }
 
+void menu(){
+	unsigned char Character1[8] = { 0x1c,0x16,0x1d,0x01,0x1d,0x16,0x1c,0x00 }; // Phone Up 1
+	LCD_WriteData(0x00);
+	
+}
+
 int main(void){
   	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0xFF; PORTB = 0x00;
@@ -456,27 +474,13 @@ int main(void){
 	LCD_init();
 	state = init;
 	//uint8_t led_pattern ;
-	LCD_DisplayString(1, "hi");
+// 	LCD_DisplayString(1, "hi");
+	menu();
+	
 	while(1) {
 		HC595Write(0b00000000);
 		sound();
 	}
 	return 1;
 }
-
-
-
-
-
-// int main(void){
-// 	DDRC = 0xFF; PORTC = 0x00;
-// 	DDRD = 0xFF; PORTD = 0x00;
-// 	LCD_init();
-// 	LCD_DisplayString(1, "I work. YAY :) :)");
-	
-// 	while(1){continue;}
-	
-// }
-	
-	
 
