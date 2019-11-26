@@ -506,10 +506,10 @@ int main(void){
 		y = readadc(1);
 		HC595Write(0b00000000);
 		sound();
-		if(x < 500){
+		if(y < 500){
 			LCD_DisplayString(1, "up");	
 		}
-		else if(x > 580){
+		else if(y > 580){
 			LCD_DisplayString(1, "down");
 		}
 		else{
