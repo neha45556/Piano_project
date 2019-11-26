@@ -459,17 +459,17 @@ void sound(){
 }
 
 void menu(){
-// 	unsigned char Character1[8] = {0x00,
-//   0x10,
-//   0x18,
-//   0x1C,
-//   0x1E,
-//   0x1C,
-//   0x18,
-//   0x10 }; // Phone Up 1
+	unsigned char Character1[8] = {0x00,
+  0x10,
+  0x18,
+  0x1C,
+  0x1E,
+  0x1C,
+  0x18,
+  0x10 }; // Phone Up 1
 // 	LCD_WriteData(0x00);
 	
-	unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
+	//unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
 	createChar(1,Character1);
 }
 
