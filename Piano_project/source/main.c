@@ -468,7 +468,7 @@ void sound(){
 }
 
 void menu(){
-	LCD_DisplayString(1, " Free Play ");
+	LCD_DisplayString(0, " Free Play ");
 	LCD_DisplayString(17, " Songs ");
 }
 
