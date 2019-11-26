@@ -459,7 +459,7 @@ void sound(){
 }
 
 void menu(){
-	unsigned char Character1[8] = { 0x1c,0x16,0x1d,0x01,0x1d,0x16,0x1c,0x00 }; // Phone Up 1
+	unsigned char Character1[8] = {B00000, B10000, B11000, B11100, B11110,B11100,B11000,B10000 }; // Phone Up 1
 	LCD_WriteData(0x00);
 	
 }
