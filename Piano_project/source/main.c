@@ -481,7 +481,7 @@ int main(void){
 	createChar(1,Pattern1);
 	//menu();
 	LCD_init();
-	LCD_DisplayString(1, "hi");
+	LCD_DisplayString(5, "hi");
 	
 	while(1) {
 		HC595Write(0b00000000);
