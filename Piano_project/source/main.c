@@ -102,7 +102,7 @@ void createChar(unsigned char loc, unsigned char* p){
 			LCD_WriteData(p[i]);
 		}
 	}
-	LCD_WriteCommand(0x80);
+	//LCD_WriteCommand(0x80);
 }
 
 #define HC595_PORT   PORTD
