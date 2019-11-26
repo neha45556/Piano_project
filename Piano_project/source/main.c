@@ -16,7 +16,7 @@ Please refer to LICENSE file for licensing information.
 #include <util/delay.h>
 #include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
 
-#include <lcdpcf8574.h>
+#include "lcdpcf8574.h"
 //#include "uart/uart.h"
 
 
