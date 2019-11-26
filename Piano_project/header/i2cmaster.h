@@ -191,7 +191,6 @@ extern unsigned char i2c_read(unsigned char ack);
 #include <inttypes.h>
 #include <compat/twi.h>
 
-#include "i2cmaster.h"
 
 
 /* define CPU frequency in Mhz here if not defined in Makefile */
