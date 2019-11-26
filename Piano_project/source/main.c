@@ -8,12 +8,11 @@
  *	code, is my own original work.
  */
 
-
+#define F_CPU 8000000UL
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdio.h>
 #include <util/delay.h>
-#define F_CPU 8000000UL
 #include "io.h"
 #ifdef _SIMULATE_
 #include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
