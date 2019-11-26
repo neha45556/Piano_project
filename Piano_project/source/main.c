@@ -102,7 +102,7 @@ void createChar(unsigned char loc, unsigned char* p){
 			LCD_WriteData(p[i]);
 		}
 	}
-	LCD_WriteCommand(0x80);
+	//LCD_WriteCommand(0x80);
 }
 
 #define HC595_PORT   PORTD
@@ -458,18 +458,20 @@ void sound(){
 			
 }
 
-// void menu(){
-// // 	unsigned char Character1[8] = {0x00,
-// //   0x10,
-// //   0x18,
-// //   0x1C,
-// //   0x1E,
-// //   0x1C,
-// //   0x18,
-// //   0x10 }; // Phone Up 1
+void menu(){
+// 	unsigned char Character1[8] = {0x00,
+//   0x10,
+//   0x18,
+//   0x1C,
+//   0x1E,
+//   0x1C,
+//   0x18,
+//   0x10 }; // Phone Up 1
 // 	LCD_WriteData(0x00);
 	
-// }
+	unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
+	createChar(1,Character1);
+}
 
 int main(void){
   	DDRA = 0x00; PORTA = 0xFF;
@@ -481,8 +483,8 @@ int main(void){
 	LCD_init();
 	state = init;
 	//uint8_t led_pattern ;
- 	LCD_DisplayString(1, "hi");
-	//menu();
+ 	//LCD_DisplayString(1, "hi");
+	menu();
 	
 	while(1) {
 		HC595Write(0b00000000);
