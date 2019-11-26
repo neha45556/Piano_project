@@ -389,8 +389,8 @@ void sound(){
 
 void menu(){
 	//LCD_DisplayString(5, " Free Play ");
-	unsigned char Character1[8] = {0x00, 0x10,0x18, 0x1C,0x1E,0x1C,0x18,0x10 }; // Phone Up 1
-	createChar(1,Character1);
+// 	unsigned char Character1[8] = {0x00, 0x10,0x18, 0x1C,0x1E,0x1C,0x18,0x10 }; // Phone Up 1
+// 	createChar(1,Character1);
 	//LCD_DisplayString(3, "FreePlay        Songs ");
 	uint16_t x,y,z;
 	x = readadc(0);
@@ -406,7 +406,7 @@ int main(void){
 	PWM_on();
 	HC595Init();
 	short x,y,z;
-
+	LCD_DisplayString(5, " Free Play ");
 	
 	state = init;
 	InitADC();
