@@ -483,7 +483,7 @@ void menu(){
 }
 
 int main(void){
-  	//DDRA = 0x00; PORTA = 0xFF;
+  	DDRA = 0x00; PORTA = 0xFF;
 	DDRB = 0x00; PORTB = 0xFF;
 	DDRD = 0xFF; PORTD = 0x00;
 	DDRC = 0xFF; PORTC = 0x00;
@@ -504,8 +504,8 @@ int main(void){
 	while(1) {
 		x = readadc(0);
 		y = readadc(1);
-		//HC595Write(0b00000000);
-		//sound();
+		HC595Write(0b00000000);
+		sound();
 		if(x < 500){
 			LCD_DisplayString(1, "up");	
 		}
