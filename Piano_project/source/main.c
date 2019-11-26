@@ -198,6 +198,15 @@ void PWM_off(){
     TCCR3B = 0x00;
 }
 
+void ADC_init() {
+	ADCSRA |= (1 << ADEN) | (1 << ADSC) | (1 << ADATE);
+	// ADEN: setting this bit enables analog-to-digital conversion.
+	// ADSC: setting this bit starts the first conversion.
+	// ADATE: setting this bit enables auto-triggering. Since we are
+	//        in Free Running Mode, a new conversion will trigger whenever
+	//        the previous conversion completes.
+}
+
 
 
 #define buttons (~PINA & 0x7F)
@@ -458,11 +467,10 @@ void sound(){
 			
 }
 
-// void menu(){
-// 	unsigned char Pattern1[]= {0x0e,0x0e,0x04,0x04,0x1f,0x04,0x0a,0x0a}; 
-	
-// 	createChar(1,Pattern1);
-// }
+void menu(){
+	LCD_DisplayString(1, " Free Play ");
+	LCD_DisplayString(17, " Songs ");
+}
 
 int main(void){
   	DDRA = 0x00; PORTA = 0xFF;
@@ -474,11 +482,11 @@ int main(void){
 	
 	state = init;
 	//uint8_t led_pattern ;
- 	//LCD_DisplayString(1, "hi");
-	unsigned char Character1[8] = { 0x00, 0x0A, 0x15, 0x11, 0x0A, 0x04, 0x00, 0x00 };
+ 	
+	
 	LCD_init();
-	//menu();
-	createChar(0,Character1);
+	menu();
+	
 	
 	while(1) {
 		HC595Write(0b00000000);
