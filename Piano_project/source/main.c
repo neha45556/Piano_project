@@ -458,12 +458,12 @@ void sound(){
 			
 }
 
-void menu(){
-	unsigned char Pattern1[]= {0x0e,0x0e,0x04,0x04,0x1f,0x04,0x0a,0x0a}; 
+// void menu(){
+// 	unsigned char Pattern1[]= {0x0e,0x0e,0x04,0x04,0x1f,0x04,0x0a,0x0a}; 
 	
-	//unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
-	createChar(1,Pattern1);
-}
+// 	//unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
+// 	createChar(1,Pattern1);
+// }
 
 int main(void){
   	DDRA = 0x00; PORTA = 0xFF;
@@ -472,11 +472,16 @@ int main(void){
 	DDRC = 0xFF; PORTC = 0x00;
 	PWM_on();
 	HC595Init();
-	LCD_init();
 	state = init;
 	//uint8_t led_pattern ;
  	//LCD_DisplayString(1, "hi");
-	menu();
+	unsigned char Pattern1[]= {0x0e,0x0e,0x04,0x04,0x1f,0x04,0x0a,0x0a}; 
+	
+	//unsigned char Character1[8] = { 0b11111,0b11011,0b10111,0b00000,0b10111,0b11011,0b11111,0b11111};
+	createChar(1,Pattern1);
+	//menu();
+	LCD_init();
+	LCD_DisplayString(1, "hi");
 	
 	while(1) {
 		HC595Write(0b00000000);
