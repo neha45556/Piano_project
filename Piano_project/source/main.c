@@ -15,7 +15,7 @@ Please refer to LICENSE file for licensing information.
 #include <avr/interrupt.h>
 #include <util/delay.h>
 
-#include "lcdpcf8574/lcdpcf8574.h"
+#include <lcdpcf8574/lcdpcf8574.h>
 //#include "uart/uart.h"
 
 
