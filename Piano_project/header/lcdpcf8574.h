@@ -237,7 +237,7 @@ Please refer to LICENSE file for licensing information.
 #include <avr/io.h>
 #include <avr/pgmspace.h>
 
-#include "../pcf8574/pcf8574.h"
+#include "pcf8574.h"
 
 #include "lcdpcf8574.h"
 
