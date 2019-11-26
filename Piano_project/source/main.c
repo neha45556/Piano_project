@@ -198,14 +198,20 @@ void PWM_off(){
     TCCR3B = 0x00;
 }
 
-void ADC_init() {
-	ADCSRA |= (1 << ADEN) | (1 << ADSC) | (1 << ADATE);
-	// ADEN: setting this bit enables analog-to-digital conversion.
-	// ADSC: setting this bit starts the first conversion.
-	// ADATE: setting this bit enables auto-triggering. Since we are
-	//        in Free Running Mode, a new conversion will trigger whenever
-	//        the previous conversion completes.
+void InitADC(void)
+{
+    ADMUX|=(1<<REFS0);    
+    ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
 }
+uint16_t readadc(uint8_t ch)
+{
+    ch&=0b00000111;         //ANDing to limit input to 7
+    ADMUX = (ADMUX & 0xf8)|ch;  //Clear last 3 bits of ADMUX, OR with ch
+    ADCSRA|=(1<<ADSC);        //START CONVERSION
+    while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
+    return(ADC);        //RETURN ADC VALUE
+}
+
 
 
 
@@ -470,17 +476,24 @@ void sound(){
 void menu(){
 	//LCD_DisplayString(5, " Free Play ");
 	LCD_DisplayString(3, "FreePlay        Songs ");
+	uint16_t x,y,z;
+	x = readadc(0);
+	y = readadc(1);
+	
 }
 
 int main(void){
   	DDRA = 0x00; PORTA = 0xFF;
-	DDRB = 0xFF; PORTB = 0x00;
+	DDRB = 0x00; PORTB = 0xFF;
 	DDRD = 0xFF; PORTD = 0x00;
 	DDRC = 0xFF; PORTC = 0x00;
 	PWM_on();
 	HC595Init();
+	short x,y,z;
+
 	
 	state = init;
+	ADC_init();
 	//uint8_t led_pattern ;
  	
 	
@@ -489,8 +502,19 @@ int main(void){
 	
 	
 	while(1) {
-		HC595Write(0b00000000);
-		sound();
+		x = readadc(0);
+		y = readadc(1);
+		//HC595Write(0b00000000);
+		//sound();
+		if(x < 500){
+			LCD_DisplayString(1, "up");	
+		}
+		else if(x > 580){
+			LCD_DisplayString(1, "down");
+		}
+		else{
+			LCD_DisplayString(1, "middle");
+		}	
 	}
 	return 1;
 }
