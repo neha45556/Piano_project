@@ -483,7 +483,7 @@ void menu(){
 }
 
 int main(void){
-  	DDRA = 0x00; PORTA = 0xF8;
+  	DDRA = 0xFF; PORTA = 0x08;
  	DDRB = 0x00; PORTB = 0xFF;
 	DDRD = 0xFF; PORTD = 0x00;
 	DDRC = 0xFF; PORTC = 0x00;
