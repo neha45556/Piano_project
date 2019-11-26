@@ -215,8 +215,9 @@ uint16_t readadc(uint8_t ch)
 
 
 
-#define buttons (~PINB & 0xFF) //7F
-
+#define buttons (~PINB & 0x07) //7F
+// #define buttons(~PINA & 0x78)
+// #define 
 enum states {init, C, D, E1, F, G, A, B} state;
 void sound(){
 	switch(state){
