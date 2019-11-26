@@ -468,8 +468,8 @@ void sound(){
 }
 
 void menu(){
-	LCD_DisplayString(5, " Free Play ");
-	LCD_DisplayString(17, " Songs ");
+	//LCD_DisplayString(5, " Free Play ");
+	LCD_DisplayString(1, "FreePlay                                                     Songs ");
 }
 
 int main(void){
