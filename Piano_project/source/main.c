@@ -215,7 +215,7 @@ uint16_t readadc(uint8_t ch)
 
 
 
-#define buttons (~PINB & 0x7F)
+#define buttons (~PINB & 0xFF) //7F
 
 enum states {init, C, D, E1, F, G, A, B} state;
 void sound(){
