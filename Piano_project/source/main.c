@@ -493,7 +493,7 @@ int main(void){
 
 	
 	state = init;
-	ADC_init();
+	InitADC();
 	//uint8_t led_pattern ;
  	
 	
