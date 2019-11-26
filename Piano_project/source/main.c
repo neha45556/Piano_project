@@ -190,7 +190,7 @@ void PWM_off(){
 
 #define buttons (~PINA & 0x7F)
 
-enum states {init, C, D, E, F, G, A, B} state;
+enum states {init, C, D, E1, F, G, A, B} state;
 void sound(){
 	switch(state){
 		case init:
@@ -201,7 +201,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -227,7 +227,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -253,7 +253,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -271,7 +271,7 @@ void sound(){
 				state = init;
 			}
 		break;
-		case E:
+		case E1:
 			if(buttons == 0x01){
 				state = C;
 			}
@@ -279,7 +279,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -305,7 +305,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -331,7 +331,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -357,7 +357,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -383,7 +383,7 @@ void sound(){
 				state = D;
 			}
 			else if(buttons == 0x04){
-				state = E;
+				state = E1;
 			}
 			else if(buttons == 0x08){
 				state = F;
@@ -419,7 +419,7 @@ void sound(){
 			set_PWM(293.66);
 			HC595Write(0b00000100);
 			break;
-		case E:
+		case E1:
 			set_PWM(329.63);
 			HC595Write(0b00001000);
 			break;
