@@ -478,7 +478,7 @@ int main(void){
 	unsigned char Character1[8] = { 0x00, 0x0A, 0x15, 0x11, 0x0A, 0x04, 0x00, 0x00 };
 	LCD_init();
 	//menu();
-	createChar(0,Character[1]);
+	createChar(0,Character1);
 	
 	while(1) {
 		HC595Write(0b00000000);
