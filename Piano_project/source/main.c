@@ -653,10 +653,15 @@ void sound(){
 // 	return 1;
 // }
 
-void InitADC(void)
-{
-    ADMUX|=(1<<REFS0);    
-    ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+// void InitADC(void)
+// {
+//     ADMUX|=(1<<REFS0);    
+//     ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+// }
+
+
+void ADC_init() {
+	ADCSRA |= (1 << ADEN) | (1 << ADSC) | (1 << ADATE);
 }
 uint16_t readadc(uint8_t ch)
 {
@@ -671,7 +676,8 @@ int main(void)
 DDRA = 0x00; PORTA = 0xFF;
     char a[20], b[20], c[20];   
     uint16_t x,y,z;
-    InitADC();         //INITIALIZE ADC
+   // InitADC();         //INITIALIZE ADC
+     ADC_init();
     lcd_init(LCD_DISP_ON_BLINK);   
     uint8_t led = 0;
     lcd_led(led); //set led
