@@ -673,6 +673,8 @@ DDRA = 0x00; PORTA = 0xFF;
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
     lcd_init(LCD_DISP_ON_BLINK);   
+	 uint8_t led = 0;
+     lcd_led(led); //set led
     
     while(1)
     {
