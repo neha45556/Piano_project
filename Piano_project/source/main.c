@@ -426,7 +426,7 @@ DDRD = 0xFF; PORTD = 0x00;
 
     char a[20], b[20], c[20];   
     
-    //uint16_t x,y,z;
+    uint16_t x,y;//,z;
     InitADC();         //INITIALIZE ADC
     state = init;
     lcd_init(LCD_DISP_ON_BLINK);   
