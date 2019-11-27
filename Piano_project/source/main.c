@@ -110,6 +110,16 @@ void Wait()
 }
 
 
+void LCD_String_xy (char row, char pos, char *str)	/* Send string to LCD function */
+{
+	if (row == 1)
+		LCD_Command((pos & 0x0F)|0x80);				/* Command of first row and required position<16 */
+	else if (row == 2)
+		LCD_Command((pos & 0x0F)|0xC0);				/* Command of Second row and required position<16 */
+	LCD_String(str);								/* Call LCD string function */
+}
+
+
 #define buttons (~PINA & 0x7F)
 
 enum states {init, C, D, E1, F, G, A, B} state;
