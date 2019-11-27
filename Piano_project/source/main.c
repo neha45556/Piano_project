@@ -653,56 +653,101 @@ void sound(){
 // 	return 1;
 // }
 
-void InitADC(void)
+// void InitADC(void)
+// {
+//     ADMUX|=(1<<REFS0);    
+//     ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+// }
+
+
+
+// uint16_t readadc(uint8_t ch)
+// {
+//     ch&=0b00000111;         //ANDing to limit input to 7
+//     ADMUX = (ADMUX & 0xf8)|ch;  //Clear last 3 bits of ADMUX, OR with ch
+//     ADCSRA|=(1<<ADSC);        //START CONVERSION
+//     while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
+//     return(ADC);        //RETURN ADC VALUE
+// }
+void ADC_Init()
 {
-    ADMUX|=(1<<REFS0);    
-    ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+	DDRA = 0x00;		/* Make ADC port as input */
+	ADCSRA = 0x87;		/* Enable ADC, fr/128  */
+	ADMUX = 0x40;		/* Vref: Avcc, ADC channel: 0 */
 }
 
-
-
-uint16_t readadc(uint8_t ch)
+int ADC_Read(char channel)
 {
-    ch&=0b00000111;         //ANDing to limit input to 7
-    ADMUX = (ADMUX & 0xf8)|ch;  //Clear last 3 bits of ADMUX, OR with ch
-    ADCSRA|=(1<<ADSC);        //START CONVERSION
-    while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
-    return(ADC);        //RETURN ADC VALUE
+	int ADC_value;
+	
+	ADMUX = (0x40) | (channel & 0x07);/* set input channel to read */
+	ADCSRA |= (1<<ADSC);	/* start conversion */
+	while((ADCSRA &(1<<ADIF))== 0);	/* monitor end of conversion interrupt flag */
+	
+	ADCSRA |= (1<<ADIF);	/* clear interrupt flag */
+	ADC_value = (int)ADCL;	/* read lower byte */
+	ADC_value = ADC_value + (int)ADCH*256;/* read higher 2 bits, Multiply with weightage */
+
+	return ADC_value;		/* return digital value */
 }
 int main(void)
 {
-DDRA = 0x00; PORTA = 0xFF;
-    char a[20], b[20], c[20];   
-    uint16_t x,y,z;
-    InitADC();         //INITIALIZE ADC
-    lcd_init(LCD_DISP_ON_BLINK);   
-    uint8_t led = 0;
-    lcd_led(led); //set led
+// DDRA = 0x00; PORTA = 0xFF;
+//     char a[20], b[20], c[20];   
+//     uint16_t x,y,z;
+//     InitADC();         //INITIALIZE ADC
+//     lcd_init(LCD_DISP_ON_BLINK);   
+//     uint8_t led = 0;
+//     lcd_led(led); //set led
     
-    while(1)
-    {
-        lcd_home();         
-        x=readadc(0);      //READ ADC VALUE FROM PA.0
-        y=readadc(1);      //READ ADC VALUE FROM PA.1
-	itoa(x,a,10);    
-        itoa(y,b,10);
-        lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
-        lcd_gotoxy(2,0);
-        lcd_puts(a);
-        lcd_gotoxy(7,0);
-        lcd_puts("y=");
-        lcd_gotoxy(9,0);
-        lcd_puts(b);
+//     while(1)
+//     {
+//         lcd_home();         
+//         x=readadc(0);      //READ ADC VALUE FROM PA.0
+//         y=readadc(1);      //READ ADC VALUE FROM PA.1
+// 	itoa(x,a,10);    
+//         itoa(y,b,10);
+//         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
+//         lcd_gotoxy(2,0);
+//         lcd_puts(a);
+//         lcd_gotoxy(7,0);
+//         lcd_puts("y=");
+//         lcd_gotoxy(9,0);
+//         lcd_puts(b);
 	
-	if(x > 500){
-		lcd_puts("HI NEHA I WORK");
-	}
-	else if(x > 1000){
-		lcd_puts("beee");
-	}
+// 	if(x > 500){
+// 		lcd_puts("HI NEHA I WORK");
+// 	}
+// 	else if(x > 1000){
+// 		lcd_puts("beee");
+// 	}
 		
 		
-    }
+//     }
+	
+	
+	char buffer[20];
+	int ADC_Value;
+	
+	ADC_Init();
+	lcd_clrscr(1);
+	
+	while(1)
+	{
+		ADC_Value = ADC_Read(0);/* Read the status on X-OUT pin using channel 0 */
+		sprintf(buffer, "X=%d   ", ADC_Value);
+		LCD_String_xy(1, 0, buffer);
+		
+		ADC_Value = ADC_Read(1);/* Read the status on Y-OUT pin using channel 0 */
+		sprintf(buffer, "Y=%d   ", ADC_Value);
+		LCD_String_xy(1, 8, buffer);
+
+		ADC_Value = ADC_Read(2);/* Read the status on SWITCH pin using channel 0 */
+		if(ADC_Value < 600)
+			LCD_String_xy(2, 0, "Switch pressed   ");
+		else
+			LCD_String_xy(2, 0, "Switch open      ");
+	}
 }
 
 
