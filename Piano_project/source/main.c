@@ -412,8 +412,8 @@ uint16_t readadc(uint8_t ch)
 }
 
 void menu(){
-	lcd_puts(1,"SONGS");
-	lcd_puts(16,"song");
+	lcd_puts("SONGS");
+	lcd_puts("song");
 	
 	
 }
@@ -426,7 +426,7 @@ DDRD = 0xFF; PORTD = 0x00;
 
     char a[20], b[20], c[20];   
     
-    uint16_t x,y,z;
+    //uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
     state = init;
     lcd_init(LCD_DISP_ON_BLINK);   
