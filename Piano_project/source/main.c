@@ -17,7 +17,6 @@ Please refer to LICENSE file for licensing information.
 
 #include "lcdpcf8574.h"
 
-#define PIN(x) (*(&x - 2))    /* address of input register of port x */
 
 void set_PWM(double frequency){
     static double current_frequency;
@@ -669,10 +668,12 @@ uint16_t readadc(uint8_t ch)
 }
 int main(void)
 {
+DDRA = 0x00; PORTA = 0xFF;
     char a[20], b[20], c[20];   
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
-	lcd_init(LCD_DISP_ON_BLINK);         
+    lcd_init(LCD_DISP_ON_BLINK);   
+    
     while(1)
     {
         lcd_home();         
