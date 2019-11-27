@@ -412,7 +412,8 @@ uint16_t readadc(uint8_t ch)
 }
 
 void menu(){
-	LCD_DisplayString(1,"SONGS");
+	lcd_puts(1,"SONGS");
+	lcd_puts(16,"song");
 	
 	
 }
