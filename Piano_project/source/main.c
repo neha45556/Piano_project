@@ -673,8 +673,8 @@ DDRA = 0x00; PORTA = 0xFF;
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
     lcd_init(LCD_DISP_ON_BLINK);   
-	 uint8_t led = 0;
-     lcd_led(led); //set led
+    uint8_t led = 0;
+    lcd_led(led); //set led
     
     while(1)
     {
@@ -690,6 +690,15 @@ DDRA = 0x00; PORTA = 0xFF;
         lcd_puts("y=");
         lcd_gotoxy(9,0);
         lcd_puts(b);
+	
+	if(x > 500){
+		lcd_puts("HI NEHA I WORK");
+	}
+	else if(x > 1000){
+		lcd_puts("beee");
+	}
+		
+		
     }
 }
 
