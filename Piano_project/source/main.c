@@ -740,7 +740,7 @@ int main(void)
 	int ADC_Value;
 	
 	ADC_Init();
-	lcd_clrscr(1);
+	//lcd_clrscr(1);
 	
 	while(1)
 	{
