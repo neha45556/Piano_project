@@ -422,6 +422,7 @@ DDRD = 0xFF; PORTD = 0x00;
     lcd_init(LCD_DISP_ON_BLINK);   
     uint8_t led = 0;
     lcd_led(led); //set led
+	PWM_on();
     
     while(1)
     {
