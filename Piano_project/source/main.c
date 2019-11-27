@@ -670,6 +670,8 @@ uint16_t readadc(uint8_t ch)
 int main(void)
 {
 DDRA = 0x00; PORTA = 0xFF;
+DDRB = 0xE0; PORTB = 0x1F;
+
     char a[20], b[20], c[20];   
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
