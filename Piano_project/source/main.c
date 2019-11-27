@@ -417,6 +417,7 @@ DDRB = 0xE0; PORTB = 0x1F;
 DDRD = 0xFF; PORTD = 0x00;
 
     char a[20], b[20], c[20];   
+    LCD_Cursor(1);
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
     state = init;
