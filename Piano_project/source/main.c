@@ -441,10 +441,10 @@ DDRD = 0xFF; PORTD = 0x00;
         lcd_gotoxy(9,0);
         lcd_puts(b);
 	
-	if(x > 500){
+	if(y > 500){
 		lcd_puts("HI NEHA I WORK");
 	}
-	else if(x > 1000){
+	else if(y < 500){
 		lcd_puts("beee");
 	}
 		
