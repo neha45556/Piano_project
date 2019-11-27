@@ -410,6 +410,13 @@ uint16_t readadc(uint8_t ch)
     while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
     return(ADC);        //RETURN ADC VALUE
 }
+
+void menu(){
+	LCD_DisplayString(1,SONGS);
+	
+	
+}
+
 int main(void)
 {
 DDRA = 0x00; PORTA = 0xFF;
@@ -429,25 +436,26 @@ DDRD = 0xFF; PORTD = 0x00;
     while(1)
     {
 	sound();
-        lcd_home();         
+        lcd_home(); 
+	menu();
         x=readadc(0);      //READ ADC VALUE FROM PA.0
         y=readadc(1);      //READ ADC VALUE FROM PA.1
-	itoa(x,a,10);    
-        itoa(y,b,10);
-        lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
-        lcd_gotoxy(2,0);
-        lcd_puts(a);
-        lcd_gotoxy(7,0);
-        lcd_puts("y=");
-        lcd_gotoxy(9,0);
-        lcd_puts(b);
+// 	itoa(x,a,10);    
+//         itoa(y,b,10);
+//         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
+//         lcd_gotoxy(2,0);
+//         lcd_puts(a);
+//         lcd_gotoxy(7,0);
+//         lcd_puts("y=");
+//         lcd_gotoxy(9,0);
+//         lcd_puts(b);
 	
-	if(y > 500){
-		lcd_puts("HI NEHA I WORK");
-	}
-	else if(y < 500){
-		lcd_puts("beee");
-	}
+// 	if(y > 500){
+// 		lcd_puts("HI NEHA I WORK");
+// 	}
+// 	else if(y < 500){
+// 		lcd_puts("beee");
+// 	}
 		
 		
     }
