@@ -681,10 +681,6 @@ DDRA = 0x00; PORTA = 0xFF;
         lcd_home();         
         x=readadc(0);      //READ ADC VALUE FROM PA.0
         y=readadc(1);      //READ ADC VALUE FROM PA.1
-        x=x-512;
-        y=y-512;
-        itoa(x,a,10);    
-        itoa(y,b,10);
         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
         lcd_gotoxy(2,0);
         lcd_puts(a);
