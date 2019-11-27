@@ -681,6 +681,7 @@ DDRB = 0xE0; PORTB = 0x1F;
     
     while(1)
     {
+	sound();
         lcd_home();         
         x=readadc(0);      //READ ADC VALUE FROM PA.0
         y=readadc(1);      //READ ADC VALUE FROM PA.1
