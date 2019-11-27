@@ -672,8 +672,7 @@ int main(void)
     char a[20], b[20], c[20];   
     uint16_t x,y,z;
     InitADC();         //INITIALIZE ADC
-    lcd_init(LCD_DISP_ON);  //INITIALIZE LCD
-    lcd_clrscr();      
+	lcd_init(LCD_DISP_ON_BLINK);         
     while(1)
     {
         lcd_home();         
