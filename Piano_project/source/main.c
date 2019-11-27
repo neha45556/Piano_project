@@ -110,16 +110,6 @@ void Wait()
 }
 
 
-void LCD_String_xy (char row, char pos, char *str)	/* Send string to LCD function */
-{
-	if (row == 1)
-		LCD_Command((pos & 0x0F)|0x80);				/* Command of first row and required position<16 */
-	else if (row == 2)
-		LCD_Command((pos & 0x0F)|0xC0);				/* Command of Second row and required position<16 */
-	LCD_String(str);								/* Call LCD string function */
-}
-
-
 #define buttons (~PINA & 0x7F)
 
 enum states {init, C, D, E1, F, G, A, B} state;
@@ -702,62 +692,42 @@ int ADC_Read(char channel)
 }
 int main(void)
 {
-// DDRA = 0x00; PORTA = 0xFF;
-//     char a[20], b[20], c[20];   
-//     uint16_t x,y,z;
-//     InitADC();         //INITIALIZE ADC
-//     lcd_init(LCD_DISP_ON_BLINK);   
-//     uint8_t led = 0;
-//     lcd_led(led); //set led
+    DDRA = 0x00; PORTA = 0xFF;
+    char a[20], b[20], c[20];   
+    uint16_t x,y,z;
+    InitADC();         //INITIALIZE ADC
+    lcd_init(LCD_DISP_ON_BLINK);   
+    uint8_t led = 0;
+    lcd_led(led); //set led
     
-//     while(1)
-//     {
-//         lcd_home();         
-//         x=readadc(0);      //READ ADC VALUE FROM PA.0
-//         y=readadc(1);      //READ ADC VALUE FROM PA.1
-// 	itoa(x,a,10);    
-//         itoa(y,b,10);
-//         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
-//         lcd_gotoxy(2,0);
-//         lcd_puts(a);
-//         lcd_gotoxy(7,0);
-//         lcd_puts("y=");
-//         lcd_gotoxy(9,0);
-//         lcd_puts(b);
+    while(1)
+    {
+        lcd_home();         
+        x=readadc(0);      //READ ADC VALUE FROM PA.0
+        y=readadc(1);      //READ ADC VALUE FROM PA.1
+	itoa(x,a,10);    
+        itoa(y,b,10);
+        lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
+        lcd_gotoxy(2,0);
+        lcd_puts(a);
+        lcd_gotoxy(7,0);
+        lcd_puts("y=");
+        lcd_gotoxy(9,0);
+        lcd_puts(b);
 	
-// 	if(x > 500){
-// 		lcd_puts("HI NEHA I WORK");
-// 	}
-// 	else if(x > 1000){
-// 		lcd_puts("beee");
-// 	}
-		
-		
-//     }
-	
-	
-	char buffer[20];
-	int ADC_Value;
-	
-	ADC_Init();
-	//lcd_clrscr(1);
-	
-	while(1)
-	{
-		ADC_Value = ADC_Read(0);/* Read the status on X-OUT pin using channel 0 */
-		sprintf(buffer, "X=%d   ", ADC_Value);
-		LCD_String_xy(1, 0, buffer);
-		
-		ADC_Value = ADC_Read(1);/* Read the status on Y-OUT pin using channel 0 */
-		sprintf(buffer, "Y=%d   ", ADC_Value);
-		LCD_String_xy(1, 8, buffer);
-
-		ADC_Value = ADC_Read(2);/* Read the status on SWITCH pin using channel 0 */
-		if(ADC_Value < 600)
-			LCD_String_xy(2, 0, "Switch pressed   ");
-		else
-			LCD_String_xy(2, 0, "Switch open      ");
+	if(x > 500){
+		lcd_puts("HI NEHA I WORK");
 	}
+	else if(x < 500){
+		lcd_puts("beee");
+	}
+		
+		
+    }
+	
+	 
+	
+	
 }
 
 
