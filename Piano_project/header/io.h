@@ -7,6 +7,7 @@ void LCD_WriteCommand (unsigned char Command);
 void LCD_Cursor (unsigned char column);
 void LCD_DisplayString(unsigned char column ,const unsigned char *string);
 void delay_ms(int miliSec);
+void LCD_String_xy (char row, char pos, char *str);
 
 
 
@@ -84,6 +85,15 @@ void delay_ms(int miliSec) //for 8 Mhz crystal
   {
    asm("nop");
   }
+}
+
+void LCD_String_xy (char row, char pos, char *str)	/* Send string to LCD function */
+{
+	if (row == 1)
+		LCD_Command((pos & 0x0F)|0x80);				/* Command of first row and required position<16 */
+	else if (row == 2)
+		LCD_Command((pos & 0x0F)|0xC0);				/* Command of Second row and required position<16 */
+	LCD_String(str);								/* Call LCD string function */
 }
 
 void createChar(unsigned char loc, unsigned char* p){
