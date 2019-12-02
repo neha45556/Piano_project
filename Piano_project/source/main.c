@@ -7,6 +7,7 @@
 #endif
 
 #include "lcdpcf8574.h"
+#include "timer.h"
 
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
@@ -377,6 +378,34 @@ void sound(){
 			
 }
 
+unsigned char cntr;
+void menu(){
+	
+	double NOTE_C4 = 261.63;
+	double NOTE_D4 = 293.66;
+	double NOTE_F4 = 349.23;
+	double NOTE_E4 = 329.63;
+	double NOTE_G4 = 392.00;
+	double NOTE_A4 = 440.00;
+	double NOTE_B4 = 493.88;	
+
+	int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
+	NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
+	NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
+	(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+
+	int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+	
+	for(int n = 0; n < happyMelody.size(); ++n){
+		while(cntr < happyDurations[i]){
+			set_PWM(happyMelody[i]);
+			cntr++;
+		}
+	}
+	
+
+}
+
 int main(void){
  	DDRA = 0x00; PORTA = 0xFF;
 	//DDRB = 0xFF; PORTB = 0x00;
@@ -385,6 +414,9 @@ int main(void){
 	PWM_on();
 	HC595Init();
 	state = init;
+	
+	TimerSet(1000);
+	TimerOn(); 
 	
 	lcd_init(LCD_DISP_ON_BLINK);  
 	uint8_t led = 0;
@@ -420,18 +452,21 @@ int main(void){
 			HC595Write(0b00100000);
 			lcd_gotoxy(10, 0);
 		}
-		else if(x > 600){ // 
+		else if(x > 600){ 
 			HC595Write(0b00010000);
 			lcd_gotoxy(3, 0);
 		}
 		else if(press < 600){ 
 			HC595Write(0b11111111);
 			lcd_gotoxy(10, 4);
+			menu();
 		}
 		else{
 			HC595Write(0b00000000);
 		}
 	}
+	while(!TimerFlag){}
+		TimerFlag = 0;
 	return 1;
 }
 
