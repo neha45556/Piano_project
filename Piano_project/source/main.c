@@ -6,6 +6,8 @@
 #include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
 #endif
 
+#include "lcdpcf8574.h"
+
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
 #define HC595_DS_POS PD0      //Data pin (DS) pin location
@@ -353,6 +355,13 @@ int main(void){
 	PWM_on();
 	HC595Init();
 	state = init;
+	
+	lcd_init(LCD_DISP_ON_BLINK);   
+    	uint8_t led = 0;
+   	lcd_led(led); //set led
+	
+   	lcd_puts("HI WORK");
+	
 	while(1) {
 		HC595Write(0b00000000);
 		sound();
