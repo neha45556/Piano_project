@@ -437,6 +437,10 @@ int main(void){
 	while(1) {    
 		//HC595Write(0b00000000);
 		sound();
+// 		for(unsigned char i < ){
+// 			menu();
+// 		}
+		menu();
 		x = ADC_Read(1);
 		y = ADC_Read(0);
 		press = ADC_Read(2);
@@ -458,7 +462,7 @@ int main(void){
 			lcd_gotoxy(3, 0);
 		}
 		else if(press < 600){ 
-			menu();
+// 			menu();
 			HC595Write(0b11111111);
 			lcd_gotoxy(10, 4);
 			
