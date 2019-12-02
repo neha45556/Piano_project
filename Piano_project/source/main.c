@@ -396,12 +396,12 @@ int main(void){
 		press = ADC_Read(2);
 		if(y < 400){
 			HC595Write(0b10000000);
-			lcd_gotoxy(3, 0);
+			lcd_gotoxy(6, 0);
 			
 		}
 		else if(y > 800){
 			HC595Write(0b01000000);
-			lcd_gotoxy(6, 2);
+			lcd_gotoxy(3, 0);
 		}
 		else if(x < 500){
 			HC595Write(0b00100000);
