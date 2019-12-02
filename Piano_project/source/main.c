@@ -382,7 +382,7 @@ int main(void){
 	uint8_t led = 0;
 	lcd_led(led);
 	
-  	lcd_puts("SONG1                                                        SONG2");
+  	lcd_puts("SONG1                                       SONG2");
 	ADC_Init();
 	
 	unsigned short y;
@@ -396,7 +396,7 @@ int main(void){
 		press = ADC_Read(2);
 		if(y < 400){
 			HC595Write(0b10000000);
-			lcd_gotoxy(7, 1);
+			lcd_gotoxy(7, 0);
 			
 		}
 		else if(y > 800){
@@ -405,11 +405,11 @@ int main(void){
 		}
 		else if(x < 500){
 			HC595Write(0b00100000);
-			lcd_gotoxy(8, 3);
+			lcd_gotoxy(8, 4);
 		}
 		else if(x > 600){
 			HC595Write(0b00010000);
-			lcd_gotoxy(9, 4);
+			lcd_gotoxy(9, 1);
 		}
 		else if(press < 600){
 			HC595Write(0b11111111);
