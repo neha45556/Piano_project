@@ -382,7 +382,7 @@ int main(void){
 	uint8_t led = 0;
 	lcd_led(led);
 	
-  	lcd_puts("SONG1                                       SONG2");
+  	lcd_puts("SONG1     SONG2");
 	ADC_Init();
 	
 	unsigned short y;
