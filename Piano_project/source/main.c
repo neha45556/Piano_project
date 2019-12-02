@@ -396,7 +396,7 @@ void menu(){
 	(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
 
 	int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
-	set_PWM(440.00);
+	//set_PWM(440.00);
 	for(int i = 0; i < 27; ++i){
 		while(cntr < happyDurations[i]){
 			set_PWM(happyMelody[i]);
@@ -466,9 +466,10 @@ int main(void){
 		else{
 			HC595Write(0b00000000);
 		}
-	}
-	while(!TimerFlag){}
+		while(!TimerFlag){}
 		TimerFlag = 0;
+	}
+	
 	return 1;
 }
 
