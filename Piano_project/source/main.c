@@ -400,10 +400,13 @@ int main(void){
 			HC595Write(0b00100000);
 		}
 		else if(x < 500){
-			HC595Write(0b00000011);
+			HC595Write(0b00000001);
 		}
-		else if(x > 500){
-			HC595Write(0b00000111);
+		else if(x > 600){
+			HC595Write(0b01000001);
+		}
+		else{
+			HC595Write(0b00000000);
 		}
 	}
 	return 1;
