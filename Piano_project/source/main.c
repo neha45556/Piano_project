@@ -397,7 +397,7 @@ void menu(){
 
 	int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 	
-	for(int n = 0; n < happyMelody.size(); ++n){
+	for(int n = 0; n < 27; ++n){
 		while(cntr < happyDurations[i]){
 			set_PWM(happyMelody[i]);
 			cntr++;
