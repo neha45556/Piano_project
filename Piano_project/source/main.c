@@ -360,7 +360,7 @@ int main(void){
 //     	uint8_t led = 0;
 //    	lcd_led(led); //set led
 	
-   	lcd_puts("HI WORK");
+ //  	lcd_puts("HI WORK");
 	
 	while(1) {
 		HC595Write(0b00000000);
