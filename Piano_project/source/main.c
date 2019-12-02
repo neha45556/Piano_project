@@ -361,6 +361,7 @@ int main(void){
   	lcd_puts("HI WORK");
 	
 	while(1) {
+		lcd_home();         
 		HC595Write(0b00000000);
 		sound();
 	}
