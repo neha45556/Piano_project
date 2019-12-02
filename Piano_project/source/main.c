@@ -385,7 +385,7 @@ int main(void){
   	lcd_puts("HI WORK");
 	ADC_Init();
 	
-	
+	unsigned short y;
 	while(1) {        
 		//HC595Write(0b00000000);
 		//sound();
