@@ -501,7 +501,7 @@ DDRD = 0xFF; PORTD = 0x00;
     {
 	sound();
         lcd_home(); 
-	menu();
+	//menu();
         //x=readadc(0);      //READ ADC VALUE FROM PA.0
        // y=readadc(1);      //READ ADC VALUE FROM PA.1
 // 	itoa(x,a,10);    
