@@ -416,7 +416,7 @@ int main(void){
 	HC595Init();
 	state = init;
 	
-	TimerSet(1000);
+	TimerSet(10);
 	TimerOn(); 
 	
 	lcd_init(LCD_DISP_ON_BLINK);  
