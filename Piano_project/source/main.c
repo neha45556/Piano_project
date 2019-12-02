@@ -1,6 +1,8 @@
 /*
 lcdpcf8574 lib sample
+
 copyright (c) Davide Gironi, 2013
+
 Released under GPLv3.
 Please refer to LICENSE file for licensing information.
 */
@@ -12,13 +14,6 @@ Please refer to LICENSE file for licensing information.
 #include <avr/pgmspace.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
-
-
-//#include "io.h"
-#ifdef _SIMULATE_
-#include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
-#endif
-
 
 #include "lcdpcf8574.h"
 
@@ -115,40 +110,31 @@ void Wait()
 }
 
 
-
-#define A3 (~PINA & 0x08)
-#define A4 (~PINA & 0x10)
-#define A5 (~PINA & 0x20)
-#define A6 (~PINA & 0x40)
-
-#define B0 (~PINB & 0x01)
-#define B1 (~PINB & 0x02)
-#define B2 (~PINB & 0x04)
+#define buttons (~PINA & 0x7F)
 
 enum states {init, C, D, E1, F, G, A, B} state;
-
 void sound(){
 	switch(state){
 		case init:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -156,25 +142,25 @@ void sound(){
 			}	
 		break;
 		case C:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -182,25 +168,25 @@ void sound(){
 			}
 		break;
 		case D:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -208,25 +194,25 @@ void sound(){
 			}
 		break;
 		case E1:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -234,25 +220,25 @@ void sound(){
 			}
 		break;
 		case F:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -260,25 +246,25 @@ void sound(){
 			}
 		break;
 		case G:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -286,25 +272,25 @@ void sound(){
 			}
 		break;
 		case A:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -312,25 +298,25 @@ void sound(){
 			}
 		break;
 		case B:
-			if(B0 == 0x01){
+			if(buttons == 0x01){
 				state = C;
 			}
-			else if(B1 == 0x02){
+			else if(buttons == 0x02){
 				state = D;
 			}
-			else if(B2 == 0x04){
+			else if(buttons == 0x04){
 				state = E1;
 			}
-			else if(A3 == 0x08){
+			else if(buttons == 0x08){
 				state = F;
 			}
-			else if(A4 == 0x10){
+			else if(buttons == 0x10){
 				state = G;
 			}
-			else if(A5 == 0x20){
+			else if(buttons == 0x20){
 				state = A;
 			}
-			else if(A6 == 0x40){
+			else if(buttons == 0x40){
 				state = B;
 			}
 			else{
@@ -382,96 +368,365 @@ void sound(){
 			
 }
 
+// #define A3 (~PINA & 0x08)
+// #define A4 (~PINA & 0x10)
+// #define A5 (~PINA & 0x20)
+// #define A6 (~PINA & 0x40)
 
+// #define B0 (~PINB & 0x01)
+// #define B1 (~PINB & 0x02)
+// #define B2 (~PINB & 0x04)
 
-// void InitADC(void)
-// {
-//     ADMUX|=(1<<REFS0);    
-//     ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+// enum states {init, C, D, E1, F, G, A, B} state;
+
+// void sound(){
+// 	switch(state){
+// 		case init:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init; 
+// 			}	
+// 		break;
+// 		case C:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case D:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case E1:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case F:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case G:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case A:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+// 		break;
+// 		case B:
+// 			if(B0 == 0x01){
+// 				state = C;
+// 			}
+// 			else if(B1 == 0x02){
+// 				state = D;
+// 			}
+// 			else if(B2 == 0x04){
+// 				state = E1;
+// 			}
+// 			else if(A3 == 0x08){
+// 				state = F;
+// 			}
+// 			else if(A4 == 0x10){
+// 				state = G;
+// 			}
+// 			else if(A5 == 0x20){
+// 				state = A;
+// 			}
+// 			else if(A6 == 0x40){
+// 				state = B;
+// 			}
+// 			else{
+// 				state = init;
+// 			}
+			
+// 		break;
+// 		default:
+// 			state = init;
+// 			break;
+// 	}
+// 	switch(state){
+// 		case init:
+// 			set_PWM(0);
+// 			HC595Write(0b00000000);
+// 			break;
+// 		case C:
+// 			set_PWM(261.63);
+// 			HC595Write(0b00000010);
+// 			break;
+// 		case D:
+// 			set_PWM(293.66);
+// 			HC595Write(0b00000100);
+// 			break;
+// 		case E1:
+// 			set_PWM(329.63);
+// 			HC595Write(0b00001000);
+// 			break;
+// 		case F:
+// 			set_PWM(349.23);
+// 			HC595Write(0b00010000);
+// 			break;
+// 		case G:
+// 			set_PWM(392.00);
+// 			HC595Write(0b00100000);
+// 			break;
+// 		case A:
+// 			set_PWM(440.00);
+// 			HC595Write(0b01000000);
+// 			break;
+// 		case B:
+// 			set_PWM(493.88);
+// 			HC595Write(0b10000000);
+// 			break;
+// 		default:
+// 			break;
+// 	}
+				
+			
 // }
 
+// int main(){
+// 	DDRA = 0x00; PORTA = 0xFF;
+// 	DDRB = 0xFF; PORTB = 0x00;
+// 	DDRD = 0xFF; PORTD = 0x00;
+// 	DDRC = 0xFF; PORTC = 0x00;
 
-
-// uint16_t readadc(uint8_t ch)
-// {
-//     ch&=0b00000111;         //ANDing to limit input to 7
-//     ADMUX = (ADMUX & 0xf8)|ch;  //Clear last 3 bits of ADMUX, OR with ch
-//     ADCSRA|=(1<<ADSC);        //START CONVERSION
-//     while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
-//     return(ADC);        //RETURN ADC VALUE
+// 	PWM_on();
+// 	HC595Init();
+// 	lcd_init(LCD_DISP_ON_BLINK);
+         
+// 	state = init;
+	
+// 	while(1){
+// 		HC595Write(0b00000000);
+// 		sound();
+// 	}
+// 	return 1;
 // }
 
+void InitADC(void)
+{
+    ADMUX|=(1<<REFS0);    
+    ADCSRA|=(1<<ADEN)|(1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2); //ENABLE ADC, PRESCALER 128
+}
 
 
-//enum states {song1,song2} state;
-// void menu(){
-// 	uint16_t x,y;
-// 	lcd_puts("SONGS                                                    SONG1");
-// 	x = ADC_Read(0);
-// 	y = ADC_Read(1);/
-	/*
-	double NOTE_C4 = 261.63;
-	double NOTE_D4 = 293.66;
-	double NOTE_F4 = 349.23;
-	double NOTE_E4 = 329.63;
-	double NOTE_G4 = 392.00;
-	double NOTE_A4 = 440.00;
-	double NOTE_B4 = 493.88;	
 
-
-	int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
-NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
-NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
-(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
-
-int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
-
-	if(joystick works and choose song 1)
-		case song1: 
-		//if clicked play happy song 
-		for (int thisNote = 0; thisNote < 8; thisNote++) {
-		    int noteDuration = 1000 / noteDurations[thisNote];
-		    //tone(PB6, melody[thisNote], noteDuration);
-		    int pauseBetweenNotes = noteDuration * 1.30;
-		    delay(pauseBetweenNotes);
-		    noTone(8);
-  }
-  else if (joystick works and choose song2){
-  		//some song
-		}
-		
-			
-			
-	
-	
-	*/
-	
-	
-//}
-
+uint16_t readadc(uint8_t ch)
+{
+    ch&=0b00000111;         //ANDing to limit input to 7
+    ADMUX = (ADMUX & 0xf8)|ch;  //Clear last 3 bits of ADMUX, OR with ch
+    ADCSRA|=(1<<ADSC);        //START CONVERSION
+    while((ADCSRA)&(1<<ADSC));    //WAIT UNTIL CONVERSION IS COMPLETE
+    return(ADC);        //RETURN ADC VALUE
+}
 int main(void)
 {
 DDRA = 0x00; PORTA = 0xFF;
-//DDRB = 0xE0; PORTB = 0x1F;
-DDRB = 0xFF; PORTB = 0x00;
-DDRC = 0xFF; PORTC = 0x00;
-DDRD = 0xFF; PORTD = 0x00;
-
-  
-    state = init;
+    char a[20], b[20], c[20];   
+    uint16_t x,y,z;
+    InitADC();         //INITIALIZE ADC
     lcd_init(LCD_DISP_ON_BLINK);   
     uint8_t led = 0;
-    
     lcd_led(led); //set led
-    PWM_on();
     
     while(1)
     {
-	sound();
-        lcd_home(); 
+        lcd_home();         
+        x=readadc(0);      //READ ADC VALUE FROM PA.0
+        y=readadc(1);      //READ ADC VALUE FROM PA.1
+	itoa(x,a,10);    
+        itoa(y,b,10);
+        lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
+        lcd_gotoxy(2,0);
+        lcd_puts(a);
+        lcd_gotoxy(7,0);
+        lcd_puts("y=");
+        lcd_gotoxy(9,0);
+        lcd_puts(b);
+	
+	if(x > 500){
+		lcd_puts("HI NEHA I WORK");
+	}
+	else if(x > 1000){
+		lcd_puts("beee");
+	}
+		
 		
     }
 }
 
 
+
+
+
+
+// int main(void)
+// {
+// 	//init uart
+
+//     //sei();
+
+//     //init lcd
+//     lcd_init(LCD_DISP_ON_BLINK);
+
+//     //lcd go home
+//     lcd_home();
+
+//     uint8_t led = 0;
+//     lcd_led(led); //set led
+
+// 	lcd_puts("HI NEHA I WORK");
+//     while(1) {
+//     }
+// }
 
