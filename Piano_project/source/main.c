@@ -411,19 +411,17 @@ void menu(){
 			}
 			break;
 		case song2:
-// 			if(press < 600){
-// 				state = song2;
-// 			}
-// 			else if(y < 400){
-// 				state = song1;
-// 			}
+			if(y < 400){
+				state1 = song1;
+			}
 			break;
 	}
 	switch(state1){
 		case init1:
 			break;
 		case song1:
-						
+			lcd_gotoxy(0, 0);
+		
 			if(press < 600){
 				
 			int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
@@ -442,6 +440,7 @@ void menu(){
 			}
 		break;
 		case song2:
+			lcd_gotoxy(0, 1);
 			break;
 	}
 }
@@ -506,6 +505,7 @@ int main(void){
 	
 	lcd_gotoxy(0, 2);
 	lcd_puts(" SONG2");
+		
 
 	ADC_Init();
 	
