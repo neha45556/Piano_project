@@ -89,6 +89,28 @@ void PWM_off(){
    TCCR3B = 0x00;
 }
 
+void ADC_Init()
+{
+	DDRA = 0x00;		/* Make ADC port as input */
+	ADCSRA = 0x87;		/* Enable ADC, fr/128  */
+	ADMUX = 0x40;		/* Vref: Avcc, ADC channel: 0 */
+}
+
+int ADC_Read(char channel)
+{
+	int ADC_value;
+	
+	ADMUX = (0x40) | (channel & 0x07);/* set input channel to read */
+	ADCSRA |= (1<<ADSC);	/* start conversion */
+	while((ADCSRA &(1<<ADIF))== 0);	/* monitor end of conversion interrupt flag */
+	
+	ADCSRA |= (1<<ADIF);	/* clear interrupt flag */
+	ADC_value = (int)ADCL;	/* read lower byte */
+	ADC_value = ADC_value + (int)ADCH*256;/* read higher 2 bits, Multiply with weightage */
+
+	return ADC_value;		/* return digital value */
+}
+
 #define buttons (~PINA & 0x7F)
 enum states {init, C, D, E, F, G, A, B} state;
 void sound(){
@@ -361,10 +383,24 @@ int main(void){
 	lcd_led(led);
 	
   	lcd_puts("HI WORK");
+	ADC_Init();
+	
 	
 	while(1) {        
-		HC595Write(0b00000000);
-		sound();
+		//HC595Write(0b00000000);
+		//sound();
+		x = ADC_Read(1);
+		y = ADC_Read(0);
+		press = ADC_Read(2);
+		if(y < 400){
+			HC595Write(0b10000000);
+		}
+		else if(y > 800){
+			HC595Write(0b10100000);
+		}
+		else{
+			HC595Write(0b00000000);
+		}
 	}
 	return 1;
 }
