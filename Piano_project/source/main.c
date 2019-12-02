@@ -458,9 +458,10 @@ int main(void){
 			lcd_gotoxy(3, 0);
 		}
 		else if(press < 600){ 
+			menu();
 			HC595Write(0b11111111);
 			lcd_gotoxy(10, 4);
-			menu();
+			
 		}
 		else{
 			HC595Write(0b00000000);
