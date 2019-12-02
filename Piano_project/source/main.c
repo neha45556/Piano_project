@@ -378,8 +378,8 @@ void sound(){
 			
 }
 
-unsigned char cntr;
 void menu(){
+	unsigned char cntr;
 	
 	double NOTE_C4 = 261.63;
 	double NOTE_D4 = 293.66;
@@ -434,7 +434,7 @@ int main(void){
 	unsigned short y;
 	unsigned short x;
 	unsigned short press;
-	while(1) {        
+	while(1) {    
 		//HC595Write(0b00000000);
 		sound();
 		x = ADC_Read(1);
