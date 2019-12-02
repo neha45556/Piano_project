@@ -390,8 +390,11 @@ int main(void){
 	uint8_t led = 0;
 	lcd_led(led);
 	
-  	lcd_puts(" SONG1");
 	lcd_gotoxy(0, 0);
+  	lcd_puts(" SONG1");
+	
+	lcd_gotoxy(0, 1);
+	lcd_puts(" SONG2");
 
 	ADC_Init();
 	
