@@ -405,7 +405,7 @@ int main(void){
 		}
 		else if(x < 500){
 			HC595Write(0b00100000);
-			lcd_gotoxy(8, 4);
+			lcd_gotoxy(8, 3);
 		}
 		else if(x > 600){
 			HC595Write(0b00010000);
