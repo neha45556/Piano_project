@@ -356,7 +356,8 @@ int main(void){
 	HC595Init();
 	state = init;
 	
-	lcd_init(LCD_DISP_ON_BLINK);   
+	lcd_init(LCD_DISP_ON_BLINK);  
+	uint8_t led = 0;
 	lcd_led(led);
 	
   	lcd_puts("HI WORK");
