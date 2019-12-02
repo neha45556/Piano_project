@@ -479,51 +479,52 @@ int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 	
 }
 
-// int main(void)
-// {
-// DDRA = 0x00; PORTA = 0xFF;
-// DDRB = 0xE0; PORTB = 0x1F;
-// DDRD = 0xFF; PORTD = 0x00;
+int main(void)
+{
+DDRA = 0x00; PORTA = 0xFF;
+DDRB = 0xE0; PORTB = 0x1F;
+DDRD = 0xFF; PORTD = 0x00;
 
-//     char a[20], b[20], c[20];   
+    char a[20], b[20], c[20];   
     
-//     uint16_t x,y;//,z;
-//     //InitADC();         //INITIALIZE ADC
+    uint16_t x,y;//,z;
+    //InitADC();         //INITIALIZE ADC
 	
-//     ADC_Init();
-//     state = init;
-//     lcd_init(LCD_DISP_ON_BLINK);   
-//     uint8_t led = 0;
-//     HC595Write(0b00000000);
-//     lcd_led(led); //set led
-// 	PWM_on();
+    ADC_Init();
+    state = init;
+    lcd_init(LCD_DISP_ON_BLINK);   
+    uint8_t led = 0;
     
-//     while(1)
-//     {
-// 	sound();
-//         lcd_home(); 
-// 	//menu();
-//         //x=readadc(0);      //READ ADC VALUE FROM PA.0
-//        // y=readadc(1);      //READ ADC VALUE FROM PA.1
-// // 	itoa(x,a,10);    
-// //         itoa(y,b,10);
-// //         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
-// //         lcd_gotoxy(2,0);
-// //         lcd_puts(a);
-// //         lcd_gotoxy(7,0);
-// //         lcd_puts("y=");
-// //         lcd_gotoxy(9,0);
-// //         lcd_puts(b);
+    lcd_led(led); //set led
+    PWM_on();
+    
+    while(1)
+    {
+	HC595Write(0b00000000);
+	sound();
+        lcd_home(); 
+	//menu();
+        //x=readadc(0);      //READ ADC VALUE FROM PA.0
+       // y=readadc(1);      //READ ADC VALUE FROM PA.1
+// 	itoa(x,a,10);    
+//         itoa(y,b,10);
+//         lcd_puts("x=");     //DISPLAY THE RESULTS ON LCD
+//         lcd_gotoxy(2,0);
+//         lcd_puts(a);
+//         lcd_gotoxy(7,0);
+//         lcd_puts("y=");
+//         lcd_gotoxy(9,0);
+//         lcd_puts(b);
 	
-// // 	if(y > 500){
-// // 		lcd_puts("HI NEHA I WORK");
-// // 	}
-// // 	else if(y < 500){
-// // 		lcd_puts("beee");
-// // 	}
+// 	if(y > 500){
+// 		lcd_puts("HI NEHA I WORK");
+// 	}
+// 	else if(y < 500){
+// 		lcd_puts("beee");
+// 	}
 		
 		
-//     }
-// }
+    }
+}
 
 
