@@ -6,7 +6,7 @@
 #include "/Users/nehagupta/Downloads/simavr-master/simavr/sim/avr/avr_mcu_section.h"
 #endif
 
-#include "lcdpcf8574.h"
+//#include "lcdpcf8574.h"
 
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
@@ -356,9 +356,9 @@ int main(void){
 	HC595Init();
 	state = init;
 	
-	lcd_init(LCD_DISP_ON_BLINK);   
-    	uint8_t led = 0;
-   	lcd_led(led); //set led
+// 	lcd_init(LCD_DISP_ON_BLINK);   
+//     	uint8_t led = 0;
+//    	lcd_led(led); //set led
 	
    	lcd_puts("HI WORK");
 	
