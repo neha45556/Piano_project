@@ -485,12 +485,12 @@ DDRA = 0x00; PORTA = 0xFF;
 DDRB = 0xE0; PORTB = 0x1F;
 DDRD = 0xFF; PORTD = 0x00;
 
-    char a[20], b[20], c[20];   
+    //char a[20], b[20], c[20];   
     
-    uint16_t x,y;//,z;
+    //uint16_t x,y;//,z;
     //InitADC();         //INITIALIZE ADC
 	
-    ADC_Init();
+    //ADC_Init();
     state = init;
     lcd_init(LCD_DISP_ON_BLINK);   
     uint8_t led = 0;
@@ -500,7 +500,6 @@ DDRD = 0xFF; PORTD = 0x00;
     
     while(1)
     {
-	HC595Write(0b00000000);
 	sound();
         lcd_home(); 
 	//menu();
