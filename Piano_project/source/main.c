@@ -456,7 +456,7 @@ NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 
 int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
-	switch(state){
+	if(joystick works and choose song 1)
 		case song1: 
 		//if clicked play happy song 
 		for (int thisNote = 0; thisNote < 8; thisNote++) {
@@ -466,6 +466,10 @@ int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 		    delay(pauseBetweenNotes);
 		    noTone(8);
   }
+  else if (joystick works and choose song2){
+  		//some song
+		}
+		
 			
 			
 	
