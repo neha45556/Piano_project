@@ -357,6 +357,7 @@ int main(void){
 	state = init;
 	
 	lcd_init(LCD_DISP_ON_BLINK);   
+	lcd_led(led);
 	
   	lcd_puts("HI WORK");
 	
