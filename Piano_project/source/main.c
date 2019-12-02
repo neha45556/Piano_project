@@ -378,7 +378,7 @@ void sound(){
 			
 }
 
-enum states { init, song1, song2} state ;
+enum statesSong { init, song1, song2} state1 ;
 unsigned char cntr;
 unsigned short y;
 unsigned short x;
@@ -398,7 +398,7 @@ void menu(){
 	y = ADC_Read(0);
 	press = ADC_Read(2);
 	
-	switch(state){
+	switch(state1){
 		case init:
 			state = song1;
 			break;	
@@ -419,7 +419,7 @@ void menu(){
 // 			}
 			break;
 	}
-	switch(state){
+	switch(state1){
 		case init:
 			break;
 		case song1:
