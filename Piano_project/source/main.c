@@ -452,7 +452,8 @@ int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 int main(void)
 {
 DDRA = 0x00; PORTA = 0xFF;
-DDRB = 0xE0; PORTB = 0x1F;
+//DDRB = 0xE0; PORTB = 0x1F;
+DDRB = 0xFF; PORTB = 0x00;
 DDRC = 0xFF; PORTC = 0x00;
 DDRD = 0xFF; PORTD = 0x00;
 
@@ -468,8 +469,6 @@ DDRD = 0xFF; PORTD = 0x00;
     {
 	sound();
         lcd_home(); 
-	
-      
 		
     }
 }
