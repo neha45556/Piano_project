@@ -389,9 +389,9 @@ int main(void){
 	while(1) {        
 		//HC595Write(0b00000000);
 		//sound();
-		x = ADC_Read(1);
+		//x = ADC_Read(1);
 		y = ADC_Read(0);
-		press = ADC_Read(2);
+		//press = ADC_Read(2);
 		if(y < 400){
 			HC595Write(0b10000000);
 		}
