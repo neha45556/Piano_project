@@ -378,32 +378,110 @@ void sound(){
 			
 }
 
+enum states { init, song1, song2} state ;
+unsigned char cntr;
+unsigned short y;
+unsigned short x;
+unsigned short press;
+
+double NOTE_C4 = 261.63;
+double NOTE_D4 = 293.66;
+double NOTE_F4 = 349.23;
+double NOTE_E4 = 329.63;
+double NOTE_G4 = 392.00;
+double NOTE_A4 = 440.00;
+double NOTE_B4 = 493.88;
+double NOTE_C5 = 523.00;
+
 void menu(){
-	unsigned char cntr;
+	x = ADC_Read(1);
+	y = ADC_Read(0);
+	press = ADC_Read(2);
 	
-	double NOTE_C4 = 261.63;
-	double NOTE_D4 = 293.66;
-	double NOTE_F4 = 349.23;
-	double NOTE_E4 = 329.63;
-	double NOTE_G4 = 392.00;
-	double NOTE_A4 = 440.00;
-	double NOTE_B4 = 493.88;
-	double NOTE_C5 = 523.00;
-
-	int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
-	NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
-	NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
-	(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
-
-	int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
-	//set_PWM(440.00);
-	for(int i = 0; i < 27; ++i){
-		while(cntr < happyDurations[i]){
-			set_PWM(happyMelody[i]);
-			cntr++;
-		}
+	switch(state){
+		case init:
+			state = song1;
+			break;	
+		case song1:
+			if(y > 800){
+				state = song2;
+			}
+			else{
+				state = song1;
+			}
+			break;
+		case song2:
+// 			if(press < 600){
+// 				state = song2;
+// 			}
+// 			else if(y < 400){
+// 				state = song1;
+// 			}
+			break;
 	}
-	
+	switch(state){
+		case init:
+			break;
+		case song1:
+						
+			if(press < 600){
+				
+			int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
+			NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
+			NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
+			(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+
+			int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+			
+				for(int i = 0; i < 27; ++i){
+					while(cntr < happyDurations[i]){
+						set_PWM(happyMelody[i]);
+						cntr++;
+					}
+				}
+			}
+		break;
+		case song2:
+			break;
+	}
+}
+
+
+
+				
+			
+			
+			
+			
+			
+			
+// 	if(y < 400){
+// 			HC595Write(0b10000000);
+// 			lcd_gotoxy(6, 0);
+			
+// 		}
+// 		else if(y > 800){
+// 			HC595Write(0b01000000);
+// 			lcd_gotoxy(3, 0);
+// 		}
+// 		else if(x < 500){
+// 			HC595Write(0b00100000);
+// 			lcd_gotoxy(10, 0);
+// 		}
+// 		else if(x > 600){ 
+// 			HC595Write(0b00010000);
+// 			lcd_gotoxy(3, 0);
+// 		}
+// 		else if(press < 600){ 
+// // 			menu();
+// 			HC595Write(0b11111111);
+// 			lcd_gotoxy(10, 4);
+			
+// 		}
+// 		else{
+// 			HC595Write(0b00000000);
+// 		}
+
 
 }
 
@@ -437,39 +515,8 @@ int main(void){
 	while(1) {    
 		//HC595Write(0b00000000);
 		sound();
-// 		for(unsigned char i < ){
-// 			menu();
-// 		}
 		menu();
-		x = ADC_Read(1);
-		y = ADC_Read(0);
-		press = ADC_Read(2);
-		if(y < 400){
-			HC595Write(0b10000000);
-			lcd_gotoxy(6, 0);
-			
-		}
-		else if(y > 800){
-			HC595Write(0b01000000);
-			lcd_gotoxy(3, 0);
-		}
-		else if(x < 500){
-			HC595Write(0b00100000);
-			lcd_gotoxy(10, 0);
-		}
-		else if(x > 600){ 
-			HC595Write(0b00010000);
-			lcd_gotoxy(3, 0);
-		}
-		else if(press < 600){ 
-// 			menu();
-			HC595Write(0b11111111);
-			lcd_gotoxy(10, 4);
-			
-		}
-		else{
-			HC595Write(0b00000000);
-		}
+		
 		while(!TimerFlag){}
 		TimerFlag = 0;
 	}
