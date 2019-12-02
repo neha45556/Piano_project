@@ -433,17 +433,44 @@ int ADC_Read(char channel)
 	return ADC_value;		/* return digital value */
 }
 
+//enum states {song1,song2} state;
 void menu(){
 	uint16_t x,y;
 	lcd_puts("SONGS                                                    SONG1");
 	x = ADC_Read(0);
 	y = ADC_Read(1);
-	if(y > 500){
-		lcd_puts("HI NEHA I WORK");
-	}
-	else if(y < 500){
-		lcd_puts("beee");
-	}
+	/*
+	double NOTE_C4 = 261.63;
+	double NOTE_D4 = 293.66;
+	double NOTE_F4 = 349.23;
+	double NOTE_E4 = 329.63;
+	double NOTE_G4 = 392.00;
+	double NOTE_A4 = 440.00;
+	double NOTE_B4 = 493.88;	
+
+
+	int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
+NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
+NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
+(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+
+int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+
+	switch(state){
+		case song1: 
+		//if clicked play happy song 
+		for (int thisNote = 0; thisNote < 8; thisNote++) {
+		    int noteDuration = 1000 / noteDurations[thisNote];
+		    //tone(PB6, melody[thisNote], noteDuration);
+		    int pauseBetweenNotes = noteDuration * 1.30;
+		    delay(pauseBetweenNotes);
+		    noTone(8);
+  }
+			
+			
+	
+	
+	*/
 	
 	
 }
