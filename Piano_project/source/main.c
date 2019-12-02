@@ -393,7 +393,7 @@ int main(void){
 	lcd_gotoxy(0, 0);
   	lcd_puts(" SONG1");
 	
-	lcd_gotoxy(0, 1);
+	lcd_gotoxy(0, 2);
 	lcd_puts(" SONG2");
 
 	ADC_Init();
@@ -434,6 +434,8 @@ int main(void){
 	}
 	return 1;
 }
+
+
 
 
 
