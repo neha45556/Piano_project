@@ -494,6 +494,7 @@ DDRD = 0xFF; PORTD = 0x00;
     state = init;
     lcd_init(LCD_DISP_ON_BLINK);   
     uint8_t led = 0;
+    HC595Write(0b00000000);
     lcd_led(led); //set led
 	PWM_on();
     
