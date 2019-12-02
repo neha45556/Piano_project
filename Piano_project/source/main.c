@@ -387,23 +387,27 @@ int main(void){
 	
 	unsigned short y;
 	unsigned short x;
+	unsigned short press;
 	while(1) {        
 		//HC595Write(0b00000000);
 		//sound();
 		x = ADC_Read(1);
 		y = ADC_Read(0);
-		//press = ADC_Read(2);
+		press = ADC_Read(2);
 		if(y < 400){
 			HC595Write(0b10000000);
 		}
 		else if(y > 800){
-			HC595Write(0b00100000);
+			HC595Write(0b01000000);
 		}
 		else if(x < 500){
-			HC595Write(0b00000001);
+			HC595Write(0b00100000);
 		}
 		else if(x > 600){
-			HC595Write(0b01000001);
+			HC595Write(0b00010000);
+		}
+		else if(press < 600){
+			HC595Write(0b11111111);
 		}
 		else{
 			HC595Write(0b00000000);
