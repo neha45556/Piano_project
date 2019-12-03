@@ -497,6 +497,7 @@ void menu(){
 					Wait(happyDurations[i]);
 				}
 			}
+			menuscreen();
 			state1 = init1;
 			//set_PWM(0);
 			break;
@@ -514,6 +515,15 @@ void menu(){
 			break;
 	}
 }
+
+void menuscreen(){
+	lcd_gotoxy(0, 0);
+  	lcd_puts(" HAPPY BIRTHDAY");
+	
+	lcd_gotoxy(0, 2);
+	lcd_puts(" OLD MCDONALD");
+}
+	
 
 // if(y < 400){
 // 			HC595Write(0b10000000);
