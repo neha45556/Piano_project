@@ -424,6 +424,9 @@ void menu(){
 			if(y < 400){
 				state1 = song1;
 			}
+			else{
+				state1 = song2;
+			}
 			break;
 		case playsong1:
 // 			if(press < 600){
