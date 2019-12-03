@@ -411,12 +411,12 @@ int mary[] = {NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4, NOT
 	      NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4,  NOTE_E4,  NOTE_E4,  NOTE_E4,  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, 
 	      NOTE_C4};
 
-int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-NOTE_G5, NOTE_D5,
-NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
-NOTE_E5, NOTE_E5, NOTE_D5,
-NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-NOTE_G5};
+// int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5, NOTE_D5,
+// NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
+// NOTE_E5, NOTE_E5, NOTE_D5,
+// NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5};
 
 //int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
@@ -492,12 +492,12 @@ void menu(){
 			lcd_gotoxy(0, 1);
 			break;
 		case playsong2:
-			if(press < 600){
-				for(unsigned char i = 0; i < 27; ++i){
-					set_PWM(oldMcdonald[i]);
-					Wait(oldMcdonald[i]);
-				}
-			}
+// 			if(press < 600){
+// 				for(unsigned char i = 0; i < 27; ++i){
+// 					set_PWM(oldMcdonald[i]);
+// 					Wait(oldMcdonald[i]);
+// 				}
+// 			}
 			break;
 	}
 }
