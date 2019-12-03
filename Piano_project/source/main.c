@@ -386,27 +386,34 @@ void sound(){
 			
 }
 
-enum statesSong { init1, song1, song2, playsong1} state1 ;
+enum statesSong { init1, song1, song2, playsong1, playsong2} state1 ;
 unsigned char cntr,i;
 unsigned short y;
 unsigned short x;
 unsigned short press;
 
-const double NOTE_C4 = 261.63;
-const double NOTE_D4 = 293.66;
-const double NOTE_F4 = 349.23;
-const double NOTE_E4 = 329.63;
-const double NOTE_G4 = 392.00;
-const double NOTE_A4 = 440.00;
-const double NOTE_B4 = 493.88;
-const double NOTE_C5 = 523.00;
+// const double NOTE_C4 = 261.63;
+// const double NOTE_D4 = 293.66;
+// const double NOTE_F4 = 349.23;
+// const double NOTE_E4 = 329.63;
+// const double NOTE_G4 = 392.00;
+// const double NOTE_A4 = 440.00;
+// const double NOTE_B4 = 493.88;
+// const double NOTE_C5 = 523.00;
 
 int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
 NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
 NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 (NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
 
-int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+// int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5, NOTE_D5,
+// NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
+// NOTE_E5, NOTE_E5, NOTE_D5,
+// NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5};
+
+//int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
 void menu(){
 	x = ADC_Read(1);
@@ -432,6 +439,9 @@ void menu(){
 			if(y < 400){
 				state1 = song1;
 			}
+			else if(press < 600){
+				state1 = playsong2;
+			}
 			else{
 				state1 = song2;
 			}
@@ -441,8 +451,8 @@ void menu(){
 // 				state1 = playsong1;
 // 			}
 			break;
-			
-			
+		case playsong2:
+			break;	
 			
 	}
 	switch(state1){
@@ -526,10 +536,10 @@ int main(void){
 	lcd_led(led);
 	
 	lcd_gotoxy(0, 0);
-  	lcd_puts(" SONG1");
+  	lcd_puts(" HAPPY BIRTHDAY");
 	
 	lcd_gotoxy(0, 2);
-	lcd_puts(" SONG2");
+	lcd_puts(" OLD MCDONALD");
 		
 
 	ADC_Init();
