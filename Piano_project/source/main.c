@@ -407,7 +407,6 @@ void menu(){
 	
 	switch(state1){
 		case init1:
-			state1 = song1;
 			break;	
 		case song1:
 			if(y > 800){
