@@ -69,7 +69,7 @@ void HC595Write(uint8_t data)
 
 void Wait(char num)
 {
-   for(uint8_t i=0;i<num*1.30;i++)
+   for(uint8_t i=0;i<num*2;i++)
    {
       _delay_loop_2(0);
    }
@@ -495,6 +495,7 @@ void menu(){
 					Wait(happyDurations[i]);
 				}
 			}
+			state = init1;
 			//set_PWM(0);
 			break;
 		case song2:
@@ -507,6 +508,7 @@ void menu(){
 					Wait(oldDurations[i]);
 				}
 			}
+			state = init1;
 			break;
 	}
 }
