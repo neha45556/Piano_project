@@ -393,19 +393,23 @@ unsigned short y;
 unsigned short x;
 unsigned short press;
 
-// const double NOTE_C4 = 261.63;
-// const double NOTE_D4 = 293.66;
-// const double NOTE_F4 = 349.23;
-// const double NOTE_E4 = 329.63;
-// const double NOTE_G4 = 392.00;
-// const double NOTE_A4 = 440.00;
-// const double NOTE_B4 = 493.88;
-// const double NOTE_C5 = 523.00;
+const double NOTE_C4 = 261.63;
+const double NOTE_D4 = 293.66;
+const double NOTE_F4 = 349.23;
+const double NOTE_E4 = 329.63;
+const double NOTE_G4 = 392.00;
+const double NOTE_A4 = 440.00;
+const double NOTE_B4 = 493.88;
+const double NOTE_C5 = 523.00;
 
-int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
-NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
-NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
-(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+// int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
+// NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
+// NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
+// (NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+
+int mary[] = {NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4,
+	      NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4,  NOTE_E4,  NOTE_E4,  NOTE_E4,  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, 
+	      NOTE_C4};
 
 int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
 NOTE_G5, NOTE_D5,
@@ -478,8 +482,8 @@ void menu(){
 // 			}
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
-					set_PWM(happyMelody[i]);
-					Wait(happyMelody[i]);
+					set_PWM(mary[i]);
+					Wait(mary[i]);
 				}
 			}
 			//set_PWM(0);
