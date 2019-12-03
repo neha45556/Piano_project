@@ -8,7 +8,7 @@
 
 #include "lcdpcf8574.h"
 #include "timer.h"
-#include "pitches.h"
+//#include "pitches.h"
 
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
