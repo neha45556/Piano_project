@@ -465,11 +465,13 @@ void menu(){
 // 					i++;
 // 					cntr = 0;
 // 			}
-		for(unsigned char i = 0; i < 27; ++i){
-			set_PWM(happyMelody[i]);
-			Wait(happyMelody[i]);
-		}
-		
+			if(press < 600){
+				for(unsigned char i = 0; i < 27; ++i){
+					set_PWM(happyMelody[i]);
+					Wait(happyMelody[i]);
+				}
+			}
+			//set_PWM(0);
 			break;
 		case song2:
 			lcd_gotoxy(0, 1);
