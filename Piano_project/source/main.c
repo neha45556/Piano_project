@@ -418,7 +418,7 @@ NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 // NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
 // NOTE_G5};
 
-//int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
 void menu(){
 	x = ADC_Read(1);
@@ -483,7 +483,7 @@ void menu(){
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(happyMelody[i]);
-					Wait(happyMelody[i]);
+					Wait(happyDurations[i]);
 				}
 			}
 			//set_PWM(0);
