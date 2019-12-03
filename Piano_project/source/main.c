@@ -489,7 +489,7 @@ void menu(){
 // 					i++;
 // 					cntr = 0;
 // 			}
-			lcd_clrscr(1);
+			lcd_clrscr();
 			lcd_puts(" NOW PLAYING HAPPY BIRTHDAY");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
