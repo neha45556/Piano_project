@@ -433,7 +433,10 @@ int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 int notesJingle[] = {NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_G4,NOTE_C4,NOTE_D4,NOTE_E4, 
 		     NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_D4,NOTE_D4,
 		     NOTE_E4,NOTE_D4,NOTE_G4,};
-int beatsJingle[] = { 10, 10, 20, 10, 10, 20, 10, 10, 10, 10, 40, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 20, 20};
+int beatsJingle[] = { 5, 5, 10, 5,5, 10, 5, 5, 5, 5, 20, 5, 5, 5,5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 10};
+
+int beats[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
+
 
 void menu(){
 	x = ADC_Read(1);
