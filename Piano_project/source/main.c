@@ -8,7 +8,7 @@
 
 #include "lcdpcf8574.h"
 #include "timer.h"
-//#include "pitches.h"
+#include "pitches.h"
 
 #define HC595_PORT   PORTD
 #define HC595_DDR    DDRD
@@ -69,7 +69,7 @@ void HC595Write(uint8_t data)
 
 void Wait(char num)
 {
-   for(uint8_t i=0;i<num*2;i++)
+   for(uint8_t i=0;i<num*1.30;i++)
    {
       _delay_loop_2(0);
    }
@@ -411,14 +411,23 @@ NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 // 	      NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4,  NOTE_E4,  NOTE_E4,  NOTE_E4,  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, 
 // 	      NOTE_C4};
 
-// int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-// NOTE_G5, NOTE_D5,
-// NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
-// NOTE_E5, NOTE_E5, NOTE_D5,
-// NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-// NOTE_G5};
+int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+NOTE_G5, NOTE_D5,
+NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
+NOTE_E5, NOTE_E5, NOTE_D5,
+NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+NOTE_G5};
 
 int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+int oldDurations[] = {
+4,4,4,4,
+4,4,2,
+4,4,4,4,
+2,4,4,
+4,4,4,4,
+4,4,2,
+4,4,4,4,
+2};
 
 void menu(){
 	x = ADC_Read(1);
@@ -492,12 +501,12 @@ void menu(){
 			lcd_gotoxy(0, 1);
 			break;
 		case playsong2:
-// 			if(press < 600){
-// 				for(unsigned char i = 0; i < 27; ++i){
-// 					set_PWM(oldMcdonald[i]);
-// 					Wait(oldMcdonald[i]);
-// 				}
-// 			}
+			if(press < 600){
+				for(unsigned char i = 0; i < 27; ++i){
+					set_PWM(oldMcdonald[i]);
+					Wait(oldDurations[i]);
+				}
+			}
 			break;
 	}
 }
