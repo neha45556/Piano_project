@@ -393,6 +393,13 @@ double NOTE_A4 = 440.00;
 double NOTE_B4 = 493.88;
 double NOTE_C5 = 523.00;
 
+int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
+NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
+NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
+(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
+
+int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+
 void menu(){
 	x = ADC_Read(1);
 	y = ADC_Read(0);
@@ -423,13 +430,6 @@ void menu(){
 			lcd_gotoxy(0, 0);
 		
 			if(press < 600){
-				
-			int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
-			NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
-			NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
-			(NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
-
-			int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 			
 				for(int i = 0; i < 27; ++i){
 					while(cntr < happyDurations[i]){
@@ -492,6 +492,7 @@ int main(void){
 	PWM_on();
 	HC595Init();
 	state = init;
+	state1 = init1;
 	
 	TimerSet(10);
 	TimerOn(); 
@@ -509,9 +510,6 @@ int main(void){
 
 	ADC_Init();
 	
-	unsigned short y;
-	unsigned short x;
-	unsigned short press;
 	while(1) {    
 		//HC595Write(0b00000000);
 		sound();
