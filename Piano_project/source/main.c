@@ -495,6 +495,7 @@ int main(void){
 	HC595Init();
 	state = init;
 	state1 = init1;
+	unsigned char ctr;
 	
 	TimerSet(10);
 	TimerOn(); 
@@ -515,7 +516,11 @@ int main(void){
 	while(1) {    
 		//HC595Write(0b00000000);
 		sound();
-		menu();
+		if(ctr >= 100){
+			menu();
+			ctr = 0; 
+		}
+		ctr++;
 		
 		while(!TimerFlag){}
 		TimerFlag = 0;
