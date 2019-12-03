@@ -492,7 +492,7 @@ void menu(){
 			lcd_clrscr();
 			lcd_puts("     NOW PLAYING    "); 
 			lcd_gotoxy(0, 1);
-			lcd_puts("   HAPPY BIRTHDAY  ");
+			lcd_puts("  HAPPY BIRTHDAY  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(happyMelody[i]);
@@ -507,6 +507,10 @@ void menu(){
 			lcd_gotoxy(0, 1);
 			break;
 		case playsong2:
+			lcd_clrscr();
+			lcd_puts("     NOW PLAYING    "); 
+			lcd_gotoxy(0, 1);
+			lcd_puts("  OLD MCDONALD  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(oldMcdonald[i]);
