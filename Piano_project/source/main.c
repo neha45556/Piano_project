@@ -407,27 +407,33 @@ NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
 NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 (NOTE_A4 + NOTE_B4) / 2, (NOTE_A4 + NOTE_B4) / 2, NOTE_A4, NOTE_F4, NOTE_G4, NOTE_F4} ;
 
+int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
+
 // int mary[] = {NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4, NOTE_D4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_E4, NOTE_E4,
 // 	      NOTE_E4, NOTE_D4, NOTE_C4, NOTE_D4,  NOTE_E4,  NOTE_E4,  NOTE_E4,  NOTE_E4, NOTE_D4, NOTE_D4, NOTE_E4, NOTE_D4, 
 // 	      NOTE_C4};
 
-int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-NOTE_G5, NOTE_D5,
-NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
-NOTE_E5, NOTE_E5, NOTE_D5,
-NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
-NOTE_G5};
+// int oldMcdonald[] = {NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5, NOTE_E5, NOTE_E5, NOTE_D5, NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5, NOTE_D5,
+// NOTE_G5, NOTE_G5, NOTE_G5, NOTE_D5,
+// NOTE_E5, NOTE_E5, NOTE_D5,
+// NOTE_B5, NOTE_B5, NOTE_A5, NOTE_A5,
+// NOTE_G5};
 
-int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
-int oldDurations[] = {
-4,4,4,4,
-4,4,2,
-4,4,4,4,
-2,4,4,
-4,4,4,4,
-4,4,2,
-4,4,4,4,
-2};
+// int oldDurations[] = {
+// 4,4,4,4,
+// 4,4,2,
+// 4,4,4,4,
+// 2,4,4,
+// 4,4,4,4,
+// 4,4,2,
+// 4,4,4,4,
+// 2};
+
+int notesJingle[] = {NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_G4,NOTE_C4,NOTE_D4,NOTE_E4, 
+		     NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_D4,NOTE_D4,
+		     NOTE_E4,NOTE_D4,NOTE_G4,};
+int beatsJingle[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
 
 void menu(){
 	x = ADC_Read(1);
@@ -513,8 +519,8 @@ void menu(){
 			lcd_puts("  OLD MCDONALD  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
-					set_PWM(oldMcdonald[i]);
-					Wait(oldDurations[i]);
+					set_PWM(notesJingle[i]);
+					Wait(beatsJingle[i]);
 				}
 			}
 			menuscreen();
