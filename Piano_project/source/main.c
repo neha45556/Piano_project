@@ -401,8 +401,8 @@ NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
 void menu(){
-	x = ADC_Read(1);
-	y = ADC_Read(0);
+	x = ADC_Read(0);
+	y = ADC_Read(1);
 	press = ADC_Read(2);
 	
 	switch(state1){
@@ -411,7 +411,6 @@ void menu(){
 			break;	
 		case song1:
 			if(y > 800){
-				lcd_puts("  HERE ");
 				state1 = song2;
 			}
 			else if(press < 600){
