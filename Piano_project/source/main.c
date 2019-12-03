@@ -436,8 +436,10 @@ void menu(){
 						set_PWM(happyMelody[i]);
 						cntr++;
 					}
+					cntr = 0;
 				}
 			}
+			set_PWM(0);
 		break;
 		case song2:
 			lcd_gotoxy(0, 1);
