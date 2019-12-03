@@ -413,7 +413,7 @@ void menu(){
 			if(y > 800){
 				state1 = song2;
 			}
-			if(press < 600){
+			else if(press < 600){
 				state1 = playsong1;
 			}
 			else{
@@ -464,46 +464,6 @@ void menu(){
 			break;
 	}
 }
-
-
-
-				
-			
-			
-			
-			
-			
-			
-// 	if(y < 400){
-// 			HC595Write(0b10000000);
-// 			lcd_gotoxy(6, 0);
-			
-// 		}
-// 		else if(y > 800){
-// 			HC595Write(0b01000000);
-// 			lcd_gotoxy(3, 0);
-// 		}
-// 		else if(x < 500){
-// 			HC595Write(0b00100000);
-// 			lcd_gotoxy(10, 0);
-// 		}
-// 		else if(x > 600){ 
-// 			HC595Write(0b00010000);
-// 			lcd_gotoxy(3, 0);
-// 		}
-// 		else if(press < 600){ 
-// // 			menu();
-// 			HC595Write(0b11111111);
-// 			lcd_gotoxy(10, 4);
-			
-// 		}
-// 		else{
-// 			HC595Write(0b00000000);
-// 		}
-
-
-
-
 int main(void){
  	DDRA = 0x00; PORTA = 0xFF;
 	//DDRB = 0xFF; PORTB = 0x00;
@@ -530,6 +490,34 @@ int main(void){
 		
 
 	ADC_Init();
+				
+	if(y < 400){
+			HC595Write(0b10000000);
+			lcd_gotoxy(6, 0);
+			
+		}
+		else if(y > 800){
+			HC595Write(0b01000000);
+			lcd_gotoxy(3, 0);
+		}
+		else if(x < 500){
+			HC595Write(0b00100000);
+			lcd_gotoxy(10, 0);
+		}
+		else if(x > 600){ 
+			HC595Write(0b00010000);
+			lcd_gotoxy(3, 0);
+		}
+		else if(press < 600){ 
+// 			menu();
+			HC595Write(0b11111111);
+			lcd_gotoxy(10, 4);
+			
+		}
+		else{
+			HC595Write(0b00000000);
+		}
+
 	
 	while(1) {    
 		//HC595Write(0b00000000);
