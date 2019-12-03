@@ -491,7 +491,12 @@ int main(void){
 
 	ADC_Init();
 				
-	if(y < 400){
+	
+	
+	while(1) {    
+		//HC595Write(0b00000000);
+		
+		if(y < 400){
 			HC595Write(0b10000000);
 			lcd_gotoxy(6, 0);
 			
@@ -518,15 +523,15 @@ int main(void){
 			HC595Write(0b00000000);
 		}
 
-	
-	while(1) {    
-		//HC595Write(0b00000000);
+		
+		
 		sound();
 		if(ctr >= 100){
 			menu();
 			ctr = 0; 
 		}
 		ctr++;
+		
 		
 		while(!TimerFlag){}
 		TimerFlag = 0;
