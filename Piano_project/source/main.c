@@ -495,7 +495,7 @@ void menu(){
 					Wait(happyDurations[i]);
 				}
 			}
-			state = init1;
+			state1 = init1;
 			//set_PWM(0);
 			break;
 		case song2:
@@ -508,7 +508,7 @@ void menu(){
 					Wait(oldDurations[i]);
 				}
 			}
-			state = init1;
+			state1 = init1;
 			break;
 	}
 }
