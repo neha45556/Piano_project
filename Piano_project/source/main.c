@@ -411,6 +411,7 @@ void menu(){
 			break;	
 		case song1:
 			if(y > 800){
+				lcd_gotoxy(0, 1);
 				state1 = song2;
 			}
 			else if(press < 600){
