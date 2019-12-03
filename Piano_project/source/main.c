@@ -407,6 +407,7 @@ void menu(){
 	
 	switch(state1){
 		case init1:
+			 lcd_gotoxy(0, 0);
 			break;	
 		case song1:
 			if(y > 800){
