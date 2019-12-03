@@ -490,7 +490,9 @@ void menu(){
 // 					cntr = 0;
 // 			}
 			lcd_clrscr();
-			lcd_puts(" NOW PLAYING HAPPY BIRTHDAY");
+			lcd_puts("     NOW PLAYING    "); 
+			lcd_gotoxy(0, 1);
+			lcd_puts("   HAPPY BIRTHDAY  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(happyMelody[i]);
@@ -517,6 +519,7 @@ void menu(){
 }
 
 void menuscreen(){
+	lcd_clrscr();
 	lcd_gotoxy(0, 0);
   	lcd_puts(" HAPPY BIRTHDAY");
 	
