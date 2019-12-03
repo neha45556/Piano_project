@@ -58,12 +58,20 @@ void HC595Write(uint8_t data)
   HC595Latch();
 }
 
-void Wait()
+// void Wait()
+// {
+//   for(uint8_t i=0;i<30;i++)
+//   {
+//      _delay_loop_2(0);
+//   }
+// }
+
+void Wait(char num)
 {
-  for(uint8_t i=0;i<30;i++)
-  {
-     _delay_loop_2(0);
-  }
+   for(uint8_t i=0;i<num;i++)
+   {
+      _delay_loop_2(0);
+   }
 }
 
 void set_PWM(double frequency){
@@ -406,16 +414,16 @@ void menu(){
 	press = ADC_Read(2);
 	switch(state1){
 		case init1:
-			 lcd_gotoxy(0, 0);
-			state1 = song1;
+			lcd_gotoxy(0, 0);
+			state1 = song1; //move states ??!@#!@#$@#R@#
 			break;	
 		case song1:
 			if(y > 800){
 				state1 = song2;
 			}
-// 			else if(press < 600){
-// 				state1 = playsong1;
-// 			}
+			else if(press < 600){
+				state1 = playsong1;
+			}
 			else{
 				state1 = song1;
 			}
@@ -446,20 +454,24 @@ void menu(){
 			i = 0;
 			cntr = 0;
 			lcd_gotoxy(0, 0);
-		break;
-	case playsong1:
+			break;
+		case playsong1:
 	
-			if(cntr < happyDurations[i]){
-				set_PWM(happyMelody[i]);
-					cntr++;
-			}
-			if(cntr == happyDurations[i]){
-					i++;
-					cntr = 0;
-			}
+// 			if(cntr < happyDurations[i]){
+// 				set_PWM(happyMelody[i]);
+// 					cntr++;
+// 			}
+// 			if(cntr == happyDurations[i]){
+// 					i++;
+// 					cntr = 0;
+// 			}
+		for(unsigned char i = 0; i < 27; ++i){
+			set_PWM(happyMelody[i]);
+			Wait(happyMelody[i]);
+		}
 		
-		break;
-	case song2:
+			break;
+		case song2:
 			lcd_gotoxy(0, 1);
 			break;
 	}
