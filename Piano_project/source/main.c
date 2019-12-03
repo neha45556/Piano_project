@@ -437,6 +437,8 @@ void menu(){
 						cntr++;
 					}
 					cntr = 0;
+					while(!TimerFlag){}
+					TimerFlag = 0;
 				}
 			}
 			set_PWM(0);
