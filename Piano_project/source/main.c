@@ -437,8 +437,11 @@ void menu(){
 	switch(state1){
 		case init1:
 			i = 0;
+			cntr = 0;
 			break;
 		case song1:
+			i = 0;
+			cntr = 0;
 			lcd_gotoxy(0, 0);
 		break;
 	case playsong1:
@@ -449,8 +452,9 @@ void menu(){
 			}
 			if(cntr == happyDurations[i]){
 					i++;
+					cntr = 0;
 			}
-			cntr = 0;
+		
 		break;
 	case song2:
 			lcd_gotoxy(0, 1);
