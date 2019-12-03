@@ -384,14 +384,14 @@ unsigned short y;
 unsigned short x;
 unsigned short press;
 
-double NOTE_C4 = 261.63;
-double NOTE_D4 = 293.66;
-double NOTE_F4 = 349.23;
-double NOTE_E4 = 329.63;
-double NOTE_G4 = 392.00;
-double NOTE_A4 = 440.00;
-double NOTE_B4 = 493.88;
-double NOTE_C5 = 523.00;
+const double NOTE_C4 = 261.63;
+const double NOTE_D4 = 293.66;
+const double NOTE_F4 = 349.23;
+const double NOTE_E4 = 329.63;
+const double NOTE_G4 = 392.00;
+const double NOTE_A4 = 440.00;
+const double NOTE_B4 = 493.88;
+const double NOTE_C5 = 523.00;
 
 int happyMelody[] = {NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_F4, NOTE_E4,
 NOTE_C4, NOTE_C4, NOTE_D4, NOTE_C4, NOTE_G4, NOTE_F4,
