@@ -71,7 +71,7 @@ void Wait(char num)
 {
    for(uint8_t i=0;i<num;i++)
    {
-      _delay_loop_2(1);
+      _delay_loop_2(0);
    }
 }
 
