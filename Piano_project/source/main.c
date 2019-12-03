@@ -483,7 +483,7 @@ void menu(){
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(mary[i]);
-					//Wait(mary[i]);
+					Wait(mary[i]);
 				}
 			}
 			//set_PWM(0);
