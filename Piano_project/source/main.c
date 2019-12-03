@@ -563,7 +563,7 @@ int main(void){
 		//HC595Write(0b00000000);
 		
 		sound();
-		if(ctr >= 1){
+		if(ctr >= 10){
 			
 			menu();
 			ctr = 0; 
