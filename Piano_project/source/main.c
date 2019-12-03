@@ -69,7 +69,7 @@ void HC595Write(uint8_t data)
 
 void Wait(char num)
 {
-   for(uint8_t i=0;i<num*3;i++)
+   for(uint8_t i=0;i<num*2;i++)
    {
       _delay_loop_2(0);
    }
