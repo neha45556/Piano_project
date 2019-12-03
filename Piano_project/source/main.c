@@ -517,6 +517,7 @@ void menu(){
 					Wait(oldDurations[i]);
 				}
 			}
+			menuscreen();
 			state1 = init1;
 			break;
 	}
