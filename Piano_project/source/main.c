@@ -404,10 +404,10 @@ void menu(){
 	x = ADC_Read(1);
 	y = ADC_Read(0);
 	press = ADC_Read(2);
-	lcd_puts(" Sw");
 	switch(state1){
 		case init1:
 			 lcd_gotoxy(0, 0);
+			state1 = song1;
 			break;	
 		case song1:
 			if(y > 800){
