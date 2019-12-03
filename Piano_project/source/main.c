@@ -378,8 +378,8 @@ void sound(){
 			
 }
 
-enum statesSong { init1, song1, song2} state1 ;
-unsigned char cntr;
+enum statesSong { init1, song1, song2, playsong1} state1 ;
+unsigned char cntr,i;
 unsigned short y;
 unsigned short x;
 unsigned short press;
@@ -413,6 +413,9 @@ void menu(){
 			if(y > 800){
 				state1 = song2;
 			}
+			if(press < 600){
+				state1 = playsong1;
+			}
 			else{
 				state1 = song1;
 			}
@@ -422,28 +425,34 @@ void menu(){
 				state1 = song1;
 			}
 			break;
+		case playsong1:
+// 			if(press < 600){
+// 				state1 = playsong1;
+// 			}
+			break;
+			
+			
+			
 	}
 	switch(state1){
 		case init1:
+			i = 0;
 			break;
 		case song1:
 			lcd_gotoxy(0, 0);
-		
-			if(press < 600){
-			
-				for(int i = 0; i < 27; ++i){
-					while(cntr < happyDurations[i]){
-						set_PWM(happyMelody[i]);
-						cntr++;
-					}
-					cntr = 0;
-					while(!TimerFlag){}
-					TimerFlag = 0;
-				}
-			}
-			set_PWM(0);
 		break;
-		case song2:
+	case playsong1:
+	
+			if(cntr < happyDurations[i]){
+				set_PWM(happyMelody[i]);
+					cntr++;
+			}
+			if(cntr == happyDurations[i]){
+					i++;
+			}
+			cntr = 0;
+		break;
+	case song2:
 			lcd_gotoxy(0, 1);
 			break;
 	}
