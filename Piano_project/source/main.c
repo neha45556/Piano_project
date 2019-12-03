@@ -69,7 +69,7 @@ void HC595Write(uint8_t data)
 
 void Wait(char num)
 {
-   for(uint8_t i=0;i<num;i++)
+   for(uint8_t i=0;i<num*10;i++)
    {
       _delay_loop_2(0);
    }
@@ -563,7 +563,7 @@ int main(void){
 		//HC595Write(0b00000000);
 		
 		sound();
-		if(ctr >= 10){
+		if(ctr >= 100){
 			
 			menu();
 			ctr = 0; 
