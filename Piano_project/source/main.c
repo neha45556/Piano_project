@@ -401,8 +401,8 @@ NOTE_C4, NOTE_C4, NOTE_C5, NOTE_A4, NOTE_F4, NOTE_F4, NOTE_E4, NOTE_D4,
 int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 
 void menu(){
-	x = ADC_Read(0);
-	y = ADC_Read(1);
+	x = ADC_Read(1);
+	y = ADC_Read(0);
 	press = ADC_Read(2);
 	
 	switch(state1){
@@ -413,20 +413,20 @@ void menu(){
 			if(y > 800){
 				state1 = song2;
 			}
-			else if(press < 600){
-				state1 = playsong1;
-			}
+// 			else if(press < 600){
+// 				state1 = playsong1;
+// 			}
 			else{
 				state1 = song1;
 			}
 			break;
 		case song2:
-// 			if(y < 400){
-// 				state1 = song1;
-// 			}
-// 			else{
-// 				state1 = song2;
-// 			}
+			if(y < 400){
+				state1 = song1;
+			}
+			else{
+				state1 = song2;
+			}
 			break;
 		case playsong1:
 // 			if(press < 600){
