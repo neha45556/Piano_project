@@ -605,7 +605,7 @@ int main(void){
 	lcd_gotoxy(0, 2);
 	lcd_puts(" OLD MCDONALD");
 	
-	lcd_gotoxy(1,3);
+	lcd_gotoxy(0,4);
 	lcd_puts(" OLDD");
 		
 
