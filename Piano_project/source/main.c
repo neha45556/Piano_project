@@ -387,7 +387,7 @@ void sound(){
 			
 }
 
-enum statesSong { init1, song1, song2, playsong1, playsong2} state1 ;
+enum statesSong { init1, song1, song2, song3, playsong1, playsong2} state1 ;
 unsigned char cntr,i;
 unsigned short y;
 unsigned short x;
@@ -448,11 +448,14 @@ void menu(){
 			state1 = song1; //move states ??!@#!@#$@#R@#
 			break;	
 		case song1:
-			if(y > 800){
+			if(y > 800){ //if(y > 800){
 				state1 = song2;
 			}
 			else if(press < 600){
 				state1 = playsong1;
+			}
+			else if(y > 800){
+				state1 = song3;
 			}
 			else{
 				state1 = song1;
@@ -515,6 +518,9 @@ void menu(){
 		case song2:
 			lcd_gotoxy(0, 1);
 			break;
+		case song3:
+			lcd_gotoxy(0, 2);
+			break;
 		case playsong2:
 			lcd_clrscr();
 			lcd_puts("     NOW PLAYING    "); 
@@ -529,6 +535,7 @@ void menu(){
 			menuscreen();
 			state1 = init1;
 			break;
+			
 	}
 }
 
