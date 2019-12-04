@@ -605,12 +605,10 @@ int main(void){
 	lcd_gotoxy(0, 2);
 	lcd_puts(" OLD MCDONALD");
 	
-	lcd_gotoxy(4,4);
-	lcd_puts(" OLDD");
+	lcd_gotoxy(2,3);
+	lcd_puts(" NEha");
 	
-	lcd_gotoxy(5,3);
-	lcd_puts(" OLDD");
-		
+	
 
 	ADC_Init();
 				
