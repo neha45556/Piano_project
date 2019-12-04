@@ -448,14 +448,11 @@ void menu(){
 			state1 = song1; //move states ??!@#!@#$@#R@#
 			break;	
 		case song1:
-			if(y > 800 && y < 1000){ //if(y > 800){
+			if(y > 800){
 				state1 = song2;
 			}
 			else if(press < 600){
 				state1 = playsong1;
-			}
-			else if(y > 1000){
-				state1 = song3;
 			}
 			else{
 				state1 = song1;
@@ -467,9 +464,6 @@ void menu(){
 			}
 			else if(press < 600){
 				state1 = playsong2;
-			}
-			else if(y > 800){
-				state1 = song3;
 			}
 			else{
 				state1 = song2;
@@ -535,7 +529,6 @@ void menu(){
 			menuscreen();
 			state1 = init1;
 			break;
-	
 	}
 }
 
@@ -621,6 +614,10 @@ int main(void){
 	
 	return 1;
 }
+
+
+
+
 
 
 
