@@ -503,11 +503,8 @@ void menu(){
 			lcd_puts("  HAPPY BIRTHDAY  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
-// 					set_PWM(happyMelody[i]);
-// 					Wait(happyDurations[i]);
-					
-					set_PWM(wish_melody[i]);
- 					Wait(wish_tempo[i]);
+					set_PWM(happyMelody[i]);
+					Wait(happyDurations[i]);
 				}
 			}
 			menuscreen();
