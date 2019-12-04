@@ -430,12 +430,36 @@ int happyDurations[] = { 4,4,4,4,4,4,2,4,4,4,4,2,4,4,4,4,4,4,4,4,2,4,4,4,4,2 };
 // 4,4,4,4,
 // 2};
 
+int wish_melody[] = {
+  NOTE_B3, 
+  NOTE_F4, NOTE_F4, NOTE_G4, NOTE_F4, NOTE_E4,
+  NOTE_D4, NOTE_D4, NOTE_D4,
+  NOTE_G4, NOTE_G4, NOTE_A4, NOTE_G4, NOTE_F4,
+  NOTE_E4, NOTE_E4, NOTE_E4,
+  NOTE_A4, NOTE_A4, NOTE_B4, NOTE_A4, NOTE_G4,
+  NOTE_F4, NOTE_D4, NOTE_B3, NOTE_B3,
+  NOTE_D4, NOTE_G4, NOTE_E4,
+  NOTE_F4
+};
+
+int wish_tempo[] = {
+  4,
+  4, 8, 8, 8, 8,
+  4, 4, 4,
+  4, 8, 8, 8, 8,
+  4, 4, 4,
+  4, 8, 8, 8, 8,
+  4, 4, 8, 8,
+  4, 4, 4,
+  2
+};
+
 int notesJingle[] = {NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_G4,NOTE_C4,NOTE_D4,NOTE_E4, 
 		     NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4, NOTE_F4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_E4,NOTE_D4,NOTE_D4,
 		     NOTE_E4,NOTE_D4,NOTE_G4,};
 int beatsJingle[] = { 5, 5, 10, 5,5, 10, 5, 5, 5, 5, 20, 5, 5, 5,5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 10, 10};
 
-int beats[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
+//int beats[] = { 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2};
 
 
 void menu(){
@@ -504,8 +528,11 @@ void menu(){
 			lcd_puts("  HAPPY BIRTHDAY  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
-					set_PWM(happyMelody[i]);
-					Wait(happyDurations[i]);
+// 					set_PWM(happyMelody[i]);
+// 					Wait(happyDurations[i]);
+					
+					set_PWM(wish_melody[i]);
+ 					Wait(wish_tempo[i]);
 				}
 			}
 			menuscreen();
@@ -519,7 +546,7 @@ void menu(){
 			lcd_clrscr();
 			lcd_puts("     NOW PLAYING    "); 
 			lcd_gotoxy(0, 1);
-			lcd_puts("  OLD MCDONALD  ");
+			lcd_puts("  JINGLE BELL  ");
 			if(press < 600){
 				for(unsigned char i = 0; i < 27; ++i){
 					set_PWM(notesJingle[i]);
@@ -538,7 +565,7 @@ void menuscreen(){
   	lcd_puts(" HAPPY BIRTHDAY");
 	
 	lcd_gotoxy(0, 2);
-	lcd_puts(" OLD MCDONALD");
+	lcd_puts(" JINGLE BELL");
 }
 	
 
@@ -592,7 +619,7 @@ int main(void){
   	lcd_puts(" HAPPY BIRTHDAY");
 	
 	lcd_gotoxy(0, 2);
-	lcd_puts(" OLD MCDONALD");
+	lcd_puts(" JINGLE BELL");
 		
 
 	ADC_Init();
