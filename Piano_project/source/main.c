@@ -488,15 +488,6 @@ void menu(){
 			lcd_gotoxy(0, 0);
 			break;
 		case playsong1:
-	
-// 			if(cntr < happyDurations[i]){
-// 				set_PWM(happyMelody[i]);
-// 					cntr++;
-// 			}
-// 			if(cntr == happyDurations[i]){
-// 					i++;
-// 					cntr = 0;
-// 			}
 			lcd_clrscr();
 			lcd_puts("     NOW PLAYING    "); 
 			lcd_gotoxy(0, 1);
