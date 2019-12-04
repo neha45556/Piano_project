@@ -601,12 +601,7 @@ int main(void){
 	
 	lcd_gotoxy(0, 0);
   	lcd_puts(" HAPPY BIRTHDAY");
-	
-	lcd_gotoxy(0, 2);
-	lcd_puts(" OLD MCDONALD");
-	
-	lcd_gotoxy(2,3);
-	lcd_puts(" NEha");
+
 	
 	
 
