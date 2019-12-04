@@ -387,7 +387,7 @@ void sound(){
 			
 }
 
-enum statesSong { init1, song1, song2, song3, playsong1, playsong2} state1 ;
+enum statesSong { init1, song1, song2, playsong1, playsong2} state1 ;
 unsigned char cntr,i;
 unsigned short y;
 unsigned short x;
@@ -521,9 +521,6 @@ void menu(){
 		case song2:
 			lcd_gotoxy(0, 1);
 			break;
-		case song3:
-			lcd_gotoxy(0, 2);
-			break;
 		case playsong2:
 			lcd_clrscr();
 			lcd_puts("     NOW PLAYING    "); 
@@ -538,8 +535,7 @@ void menu(){
 			menuscreen();
 			state1 = init1;
 			break;
-			
-			
+	
 	}
 }
 
@@ -601,9 +597,10 @@ int main(void){
 	
 	lcd_gotoxy(0, 0);
   	lcd_puts(" HAPPY BIRTHDAY");
-
 	
-	
+	lcd_gotoxy(0, 2);
+	lcd_puts(" OLD MCDONALD");
+		
 
 	ADC_Init();
 				
